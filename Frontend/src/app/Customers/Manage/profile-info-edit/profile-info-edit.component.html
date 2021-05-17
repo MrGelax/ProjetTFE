@@ -1,0 +1,229 @@
+<br>
+<div class="mb-4" style="margin-left:2%;">
+    <table class="table table-borderless col-6">
+        <thead>
+            <tr>
+                <th id="headTab" colspan="2" ><h3 style="display: inline;"> Profils Informations Edition</h3>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <p-accordion [formGroup]="form" >
+                <p-accordionTab header="Secteur" formGroupName="secteur">
+                    <tr>
+                        <td>Architecture</td>
+                        <td><input type="checkbox"[checked]="obj.Secteur.archi===true" formControlName="archi"></td>
+                    </tr>
+                    <tr>
+                        <td>Cinéma</td>
+                        <td><input type="checkbox"[checked]="obj.Secteur.cine===true" formControlName="cine"></td>
+                    </tr>
+                    <tr>
+                        <td>Mode</td>
+                        <td><input type="checkbox"[checked]="obj.Secteur.mode===true"formControlName="mode"></td>
+                    </tr>
+                    <tr>
+                        <td>Evènement</td>
+                        <td><input type="checkbox"[checked]="obj.Secteur.event===true"formControlName="event"></td>
+                    </tr>
+                    <tr>
+                        <td>Arts du Spectacle</td>
+                        <td><input type="checkbox"[checked]="obj.Secteur.artsSpec===true"formControlName="artsSpec"></td>
+                    </tr>
+                    <tr>
+                        <td>Musique</td>
+                        <td><input type="checkbox"[checked]="obj.Secteur.musique===true"formControlName="musique"></td>
+                    </tr>
+                    <tr>
+                        <td>Théâtre</td>
+                        <td><input type="checkbox"[checked]="obj.Secteur.theatre===true"formControlName="theatre"></td>
+                    </tr>
+                    <tr>
+                        <td>TV/Médias</td>
+                        <td><input type="checkbox"[checked]="obj.Secteur.tVMedia===true"formControlName="tVMedia"></td>
+                    </tr>
+                    <tr>
+                        <td>Plateaux TV et mini documentaires</td>
+                        <td><input type="checkbox"[checked]="obj.Secteur.miniDoc===true"formControlName="miniDoc"></td>
+                    </tr>
+                    <tr>
+                        <td>Émissions TV, plateaux multi-caméras</td>
+                        <td><input type="checkbox"[checked]="obj.Secteur.platMultiCam===true"formControlName="platMultiCam"></td>
+                    </tr>
+                </p-accordionTab>
+                <p-accordionTab header="Spécialisation" formGroupName="specialisation">
+                    <tr>
+                        <td>Accessoires</td>
+                        <td><input type="checkbox"[checked]="obj.Specialisation.accessoires===true" formControlName="accessoires"></td>
+                    </tr>
+                    <tr>
+                        <td>Shooting Commercial</td>
+                        <td><input type="checkbox"[checked]="obj.Specialisation.shoot_Com===true" formControlName="shoot_Com"></td>
+                    </tr>
+                    <tr>
+                        <td>Decoration</td>
+                        <td><input type="checkbox"[checked]="obj.Specialisation.deco===true" formControlName="deco"></td>
+                    </tr>
+                    <tr>
+                        <td>Effets Spéciaux</td>
+                        <td><input type="checkbox"[checked]="obj.Specialisation.effetsFx===true" formControlName="effetsFx"></td>
+                    </tr>
+                    <tr>
+                        <td>Défilés</td>
+                        <td><input type="checkbox"[checked]="obj.Specialisation.defile===true" formControlName="defile"></td>
+                    </tr>
+                </p-accordionTab>
+                <p-accordionTab header="Compétences" formGroupName="competence">
+                    <tr>
+                        <td>Art</td>
+                        <td><input type="checkbox"[checked]="obj.Competence.art===true" formControlName="art"></td>
+                    </tr>
+                    <tr>
+                        <td>Régisseur Lumière</td>
+                        <td><input type="checkbox"[checked]="obj.Competence.regi_Lum===true" formControlName="regi_Lum"></td>
+                    </tr>
+                    <tr>
+                        <td>Régisseur Son</td>
+                        <td><input type="checkbox"[checked]="obj.Competence.regiSon===true" formControlName="regiSon"></td>
+                    </tr>
+                    <tr>
+                        <td>Staffeur</td>
+                        <td><input type="checkbox"[checked]="obj.Competence.staf===true" formControlName="staf"></td>
+                    </tr>
+                    <tr>
+                        <td>Menuisier</td>
+                        <td><input type="checkbox"[checked]="obj.Competence.menui===true" formControlName="menui"></td>
+                    </tr>
+                    <tr>
+                        <td>Studio</td>
+                        <td><input type="checkbox"[checked]="obj.Competence.studio===true" formControlName="studio"></td>
+                    </tr>
+                    <tr>
+                        <td>Constructeur</td>
+                        <td><input type="checkbox"[checked]="obj.Competence.constru===true" formControlName="constru"></td>
+                    </tr>
+                    <tr>
+                        <td>Ensemblier</td>
+                        <td><input type="checkbox"[checked]="obj.Competence.ensemblier===true" formControlName="ensemblier"></td>
+                    </tr>
+                    <tr>
+                        <td>Peintre</td>
+                        <td><input type="checkbox"[checked]="obj.Competence.peintre===true" formControlName="peintre"></td>
+                    </tr>
+                    <tr>
+                        <td>Lumière</td>
+                        <td><input type="checkbox"[checked]="obj.Competence.lum===true" formControlName="lum"></td>
+                    </tr>
+
+                </p-accordionTab>
+                <p-accordionTab header="Expérience"formGroupName="experience">
+                    <tr>
+                        <div>
+                            <label>Presentation</label><br>
+                            <textarea formControlName="presentation" cols="50" rows="3" class="form-control"></textarea>
+                        </div>
+                    </tr>
+                    <tr>
+                        <div>
+                            <label>Années d'expérience</label><br>
+                            <select formControlName="ansExp" class="custom-select form-control">
+                                <option value="---">-----------</option>
+                                <option *ngFor="let item of createTab()" value="{{item}}">{{item}}</option>
+                            </select>
+                        </div>
+                    </tr>
+                </p-accordionTab>
+                <p-accordionTab header="Mes Références"formGroupName="references">
+                    <tr>
+                        <div>
+                            <label>Presentation</label><br>
+                            <textarea formControlName="refs" cols="50" rows="3" class="form-control">{{obj.Refs.refs}}</textarea>
+                        </div>
+                    </tr>
+                    <tr>
+                        <div>
+                            <label>Site Web</label><br>
+                            <input type="text" class="form-control"formControlName="site" value="{{obj.Refs.site}}">
+                        </div>
+                    </tr>
+                    <tr>
+                        <div>
+                            <label>Instagram</label><br>
+                            <input type="text" class="form-control"formControlName="insta" value="{{obj.Refs.insta}}">
+                        </div>
+                    </tr>
+                    <tr>
+                        <div>
+                            <label>Facebook</label><br>
+                            <input type="text" class="form-control"formControlName="fb"value="{{obj.Refs.fb}}">
+                        </div>
+                    </tr>
+                    <tr>
+                        <div>
+                            <label>Twitter</label><br>
+                            <input type="text" class="form-control"formControlName="twit"value="{{obj.Refs.twit}}">
+                        </div>
+                    </tr>
+                </p-accordionTab>
+                <p-accordionTab header="Diplôme(s) et Formation(s)">
+                    <tr>
+                        <div>
+                            <label>Presentation</label><br>
+                            <textarea formGroupName="diplomes" cols="50" rows="3" class="form-control">{{obj.Diplomes.diplome_formation}}</textarea>
+                        </div>
+                    </tr>  
+                </p-accordionTab>
+                <p-accordionTab header="Langue(s) parlée(s)"formGroupName="langues">
+                    <tr>
+                        <td>Architecture</td>
+                        <td><input type="checkbox"[checked]="obj.Langues.fr===true" formControlName="fr"></td>
+                    </tr>
+                    <tr>
+                        <td>Architecture</td>
+                        <td><input type="checkbox"[checked]="obj.Langues.en===true" formControlName="en"></td>
+                    </tr>
+                    <tr>
+                        <td>Architecture</td>
+                        <td><input type="checkbox"[checked]="obj.Langues.it===true" formControlName="it"></td>
+                    </tr>
+                    <tr>
+                        <td>Architecture</td>
+                        <td><input type="checkbox"[checked]="obj.Langues.es===true" formControlName="es"></td>
+                    </tr>
+                    <tr>
+                        <td>Architecture</td>
+                        <td><input type="checkbox"[checked]="obj.Langues.de===true" formControlName="de"></td>
+                    </tr>
+                    <tr>
+                        <td>Architecture</td>
+                        <td><input type="checkbox"[checked]="obj.Langues.ndls===true" formControlName="ndls"></td>
+                    </tr>
+                    <tr>
+                        <td>Architecture</td>
+                        <td><input type="checkbox"[checked]="obj.Langues.ru===true" formControlName="ru"></td>
+                    </tr>
+                    <tr>
+                        <td>Architecture</td>
+                        <td><input type="checkbox"[checked]="obj.Langues.ch===true" formControlName="ch"></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <div>
+                                <label>Other</label><br>
+                                <input type="text" class="form-control"formControlName="other" value="{{obj.Langues.other}}">
+                            </div>
+                        </td>
+                    </tr>
+                </p-accordionTab>
+                
+                <div class=""style="background-color: #595959;">
+                    <button class="btn" style="margin: 5px; border: 1px solid white; color: white;" type="submit" (click)="onSubmit()">
+                        <i class="far fa-save"></i> Save
+                    </button>
+                </div>
+            </p-accordion>
+        </tbody>
+    </table>
+</div>
+

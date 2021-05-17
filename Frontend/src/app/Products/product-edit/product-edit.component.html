@@ -1,0 +1,155 @@
+<div class="container-fluid">
+    <br>
+    <div class=" shadow mb-4">
+        <div class="card-header">
+            Edit Product #{{obj.Title}} 
+        </div>
+        <div class="card-body form">
+                <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                    <div class="form-group form-row">
+                        <div class="col-md-3">
+                            <label for="protected">Status</label>
+                        </div>
+                        <div class="col-md-9">
+                            <select class="custom-select form-control" formControlName="status">
+                                <option value="" disabled selected>Select yout option</option>
+                                <option *ngFor="let stat of status" [selected]="obj.Status===stat">{{stat}}</option>    
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <div class="col-md-3">
+                            <label for="protected">EITCultureId</label>
+                        </div>
+                        <div class="col-md-9">
+                            <select class="custom-select form-control" formControlName="eitCultureId">
+                                <option value="" disabled selected>Select yout option</option>
+                                <option *ngFor="let culture of eitCulture" [selected]="obj.EitCultureId.id===culture.id" value="{{culture.id}}">{{culture.label}}</option>    
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <div class="col-md-3">
+                            <label for="label">Title</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control"formControlName="title" value="Casting">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-3">
+                            <label for="systemName">Display order</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="number"class="form-control"formControlName="displayOrder"value="{{obj.DisplayOrder}}"/>
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <div class="col-md-3">
+                            <label>Is Favorite</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="checkbox" formControlName="favorite"value="{{obj.IsFavorite}}"/>
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <div class="col-md-3">
+                            <label>Description</label>
+                        </div>
+                        <div class="col-md-9">
+                            <ckeditor formControlName="descri">{{obj.Description}}</ckeditor>
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <div class="col-md-3">
+                            <label for="protected">Payement Type</label>
+                        </div>
+                        <div class="col-md-9">
+                            <select class="custom-select form-control" formControlName="payeType">
+                                <option value="" disabled selected>Select yout option</option>
+                                <option *ngFor="let type of payeType" value="{{type.value}}"[selected]="obj.PayementType===type.value">{{type.label}}</option>    
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <div class="col-md-3">
+                            <label for="protected">Product Type</label>
+                        </div>
+                        <div class="col-md-9">
+                            <select class="custom-select form-control" formControlName="prodType">
+                                <option value="" disabled selected>Select yout option</option>
+                                <option *ngFor="let prod of prodType" value="{{obj.ProductType}}">{{prod.label}}</option>    
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-3">
+                            <label for="systemName">Min Quantity</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="number"class="form-control"formControlName="minqt" value="{{obj.minQt}}"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-3">
+                            <label for="systemName">Price</label>
+                        </div>
+                        <div class="col-md-9">
+                            <p-inputMask mask="999.99" placeholder="10.99" formControlName="price">{{obj.Price}}</p-inputMask>
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <div class="col-md-3">
+                            <label for="label">Setup Fee</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control"formControlName="setupFee"value="{{obj.Setupfee}}"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-3">
+                            <label for="systemName">Number of credits</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="number"class="form-control"formControlName="numCredit" value="{{obj.Numcredit}}" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-3">
+                            <label for="systemName">Number of pictures allowed</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="number"class="form-control"formControlName="numPictures"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-3">
+                            <label for="systemName">Number of books allowed</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="number"class="form-control"formControlName="numBooks" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-3">
+                            <label for="systemName">Number of images allowed</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="number"class="form-control"formControlName="numImage" />
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group row float-right">
+                        <a class="btn btn-info" routerLink="../list"><i class="fas fa-arrow-left"></i> Back to List</a>
+                        <button class="btn btn-primary" style="margin-left: 3px" type="submit" [disabled]="!form.valid"><i class="far fa-save"></i> Save</button>
+                    </div>
+                    <br><br>
+                </form>
+                <p>{{form.value|json}}</p>
+                <p>
+                    Form Status: {{form.status}}
+                  </p>
+        </div>
+    </div>
+</div>
+

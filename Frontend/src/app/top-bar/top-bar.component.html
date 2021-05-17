@@ -1,0 +1,272 @@
+
+<nav style="width: 100%;" class="navbar navbar-expand navbar-light bg-white topbar static-top shadow navbar-inverse">
+  <!-- <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+    <i class="fa fa-bars"></i>
+  </button> -->
+  <!-- Topbar Navbar -->
+  <ul class="navbar-nav container-fluid">
+      <p-sidebar id="responsiveSidebar" [(visible)]="display">
+          <br>
+          <ul style="text-align: center; width: auto; " class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+              <div id="itemsLi">
+                  <!-- Nav Item - Pages Collapse Menu -->
+                  <li class="nav-item active">
+                      <a class="sbLinks" href="index.html">
+                          <div class="icons">
+                              <i class="fas fa-briefcase" style="color: white; margin-top: 25%; "></i>
+                          </div>
+
+
+                          <span>Validation</span>
+                      </a>
+                  </li>
+                  <br>
+
+                  <!-- Nav Item - Pages Collapse Menu -->
+                  <li class="nav-item">
+                      <a class="sbLinks collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+
+
+                          <div class="icons">
+                              <i class="far fa-file-alt" style="color: white; margin-top: 25%;"></i>
+                          </div>
+                          <span>CMS</span>
+                      </a>
+                      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                          <div class="bg-white py-2 collapse-inner rounded">
+                              <div class="dropright">
+                                  <a class="collapse-item" routerLink="/Blocks/list">Blocks</a>
+                                  <div class="dropdown-menu">
+                                      <a class="dropdown-item" routerLink="/Blocks/create">Create</a>
+                                  </div>
+                              </div>
+
+                              <!-- data-toggle="dropdown"-->
+
+                              <div class="dropright">
+                                  <a class="collapse-item" routerLink="/Pages/list">Pages</a>
+                                  <div class="dropdown-menu">
+                                      <a class="dropdown-item" routerLink="/Pages/create">Create</a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </li>
+
+                  <br>
+
+                  <!-- Nav Item - Utilities Collapse Menu -->
+                  <li class="nav-item">
+                      <a class="sbLinks collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+                          <div class="icons">
+                              <i class="fas fa-shopping-basket" style="color: white; margin-top: 25%; "></i>
+                          </div>
+                          <span>E-shop</span>
+                      </a>
+                      <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                          <div class="bg-white py-2 collapse-inner rounded">
+
+                              <a class="collapse-item" routerLink="/Orders/list">Orders</a>
+                              <a class="collapse-item" routerLink="/orders">Search Visibility</a>
+                              <a class="collapse-item" routerLink="/orders">Newsletter exposure</a>
+                              <a class="collapse-item" routerLink="/orders">Provided services <br>requests</a>
+                              <div class="dropright">
+                                  <a class="collapse-item" routerLink="/PromoCodes/list">Promo codes</a>
+                                  <div class="dropdown-menu">
+                                      <a class="dropdown-item" routerLink="/PromoCodes/create">Create</a>
+                                      <a class="dropdown-item" routerLink="/promocode">Promocode Used</a>
+                                  </div>
+                              </div>
+                              <div class="dropright">
+
+                                  <a class="collapse-item" routerLink="/Product/list">Products</a>
+                                  <div class="dropdown-menu">
+                                      <a class="dropdown-item" routerLink="/Product/create">Create</a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </li>
+                  <br>
+
+                  <!-- Nav Item - Pages Collapse Menu -->
+                  <li class="nav-item">
+                      <a class="sbLinks collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+                          <div class="icons">
+                              <i class="fas fa-users" style="color: white; margin-top: 25%; "></i>
+                          </div>
+                          <span>Customers</span>
+                      </a>
+                      <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                          <div class="bg-white py-2 collapse-inner rounded">
+                              <div class="dropright">
+
+                                  <a class="collapse-item" routerLink="/Customer/list">Customers</a>
+                                  <div class="dropdown-menu">
+                                      <a class="dropdown-item" routerLink="/Customer/create">Create</a>
+                                  </div>
+                              </div>
+
+                              <a class="collapse-item" routerLink="/casting">Castings</a>
+                              <a class="collapse-item" routerLink="/jobs">Jobs ads</a>
+                              <div class="collapse-divider"></div>
+                              <a class="collapse-item" routerLink="/fiche">Castings + <br>correspondant <br>fiche client</a>
+                              <a class="collapse-item" routerLink="/service">Services</a>
+                              <a class="collapse-item" routerLink="/publication">Publications</a>
+                              <a class="collapse-item" routerLink="/recommendation">Recommendations</a>
+                              <a class="collapse-item" routerLink="/message">Messages</a>
+                              <a class="collapse-item" routerLink="/review">Reviews</a>
+                              <a class="collapse-item" routerLink="/anonymous">Anonymous <br>newsletter subscription</a>
+
+
+                          </div>
+                      </div>
+                  </li>
+                  <br>
+
+                  <!-- Nav Item - Pages Collapse Menu -->
+                  <li class="nav-item">
+                      <a class="sbLinks collapsed" href="#" data-toggle="collapse" data-target="#collapsePage" aria-expanded="true" aria-controls="collapsePage">
+                          <div class="icons">
+                              <i class="fas fa-envelope-open-text" style="color: white; margin-top: 25%; "></i>
+                          </div>
+                          <span>Communication</span>
+                      </a>
+                      <div id="collapsePage" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                          <div class="bg-white py-2 collapse-inner rounded">
+                              <div class="dropright">
+                                  <a class="collapse-item" routerLink="/template">Templates emails</a>
+                                  <div class="dropdown-menu">
+                                      <a class="dropdown-item" routerLink="/create">Create</a>
+                                  </div>
+                              </div>
+
+                              <div class="dropright">
+                                  <a class="collapse-item" routerLink="/manual">Manual email</a>
+                                  <div class="dropdown-menu">
+                                      <a class="dropdown-item" routerLink="/create">Create</a>
+                                  </div>
+                              </div>
+
+                              <div class="dropright">
+                                  <a class="collapse-item" routerLink="/automation">Automations</a>
+                                  <div class="dropdown-menu">
+                                      <a class="dropdown-item" routerLink="/create">Create</a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </li>
+                  <br>
+
+                  <!-- Nav Item - Pages Collapse Menu -->
+                  <li class="nav-item">
+                      <a class="sbLinks collapsed" href="#" data-toggle="collapse" data-target="#collapseP" aria-expanded="true" aria-controls="collapseP">
+
+                          <div class="icons">
+                              <i class="fas fa-cogs" style="color: white; margin-top: 25%; "></i>
+
+                          </div>
+                          <span>Configuration</span>
+                      </a>
+                      <div id="collapseP" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                          <div class="bg-white py-2 collapse-inner rounded">
+                              <a class="collapse-item" routerLink="/typology">Typology</a>
+                              <a class="collapse-item" routerLink="/roles">Roles</a>
+                              <a class="collapse-item" routerLink="/profilefields">Profile fields</a>
+                              <a class="collapse-item" routerLink="/types">Types</a>
+                              <a class="collapse-item" routerLink="/blacklisted">Blacklisted Words</a>
+                          </div>
+                      </div>
+                  </li>
+                  <br>
+
+                  <!-- Nav Item - Pages Collapse Menu -->
+                  <li class="nav-item">
+                      <a class="sbLinks collapsed" href="#" data-toggle="collapse" data-target="#collapsePag" aria-expanded="true" aria-controls="collapsePag">
+
+                          <div class="icons">
+                              <i class="fas fa-user-cog" style="color: white; margin-top: 25%; "></i>
+
+                          </div>
+                          <span>Administration</span>
+                      </a>
+                      <div id="collapsePag" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                          <div class="bg-white py-2 collapse-inner rounded">
+                              <a class="collapse-item" routerLink="/boroles">BO roles</a>
+                              <a class="collapse-item" routerLink="/permission">Permissions</a>
+                          </div>
+                      </div>
+                  </li>
+              </div>
+          </ul>
+      </p-sidebar>
+      <button id="responsiveBtn" type="text" (click)="display = true" pButton icon="pi pi-bars"></button>
+
+
+
+
+
+      <li class="nav-link">Production</li>
+      <li>
+          <a class="nav-link" [routerLink]="['/validation']" fragment="customerPending" routerLinkActive="router-link-active" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-user-check fa-2x"></i>
+              <!-- Counter - Alerts -->
+              <span class="badge badge-danger badge-counter"></span>
+          </a>
+      </li>
+      <li>
+          <a class="nav-link" [routerLink]="['/validation']" fragment="castingPending" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-briefcase fa-2x"></i>
+              <!-- Counter - Alerts -->
+              <span class="badge badge-danger badge-counter"></span>
+          </a>
+      </li>
+      <li>
+          <a class="nav-link" [routerLink]="['/validation']" fragment="ordersPending" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="far fa-id-card fa-2x"></i>
+              <!-- Counter - Alerts -->
+              <span class="badge badge-danger badge-counter"></span>
+          </a>
+      </li>
+      <li>
+          <a class="nav-link" [routerLink]="['/validation']" fragment="reviewPending" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-concierge-bell fa-2x"></i>
+              <!-- Counter - Alerts -->
+              <span class="badge badge-danger badge-counter"></span>
+          </a>
+      </li>
+      <li>
+          <a class="nav-link" [routerLink]="['/validation']" fragment="portfoliosPending" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-shopping-basket fa-2x"></i>
+              <!-- Counter - Alerts -->
+              <span class="badge badge-danger badge-counter"></span>
+          </a>
+      </li>
+      <li>
+          <p-dropdown [options]="langs" [(ngModel)]="selectedLang" placeholder="Select a Language"></p-dropdown>
+      </li>
+      <div class="topbar-divider d-none d-sm-block"></div>
+      <!-- Nav Item - User Information -->
+      <li class=" dropdown no-arrow" *ngIf="securityService.kc.authenticated">
+          <a class="nav-link dropdown-toggle fas fa-user fa-2x" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span >{{securityService.kc.tokenParsed['name']}}</span>
+          </a>
+          <!-- Dropdown - User Information -->
+          <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+              <a class="dropdown-item" (click)="onMyAccount()" href="#">
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400 "></i>
+                  My Account
+              </a>
+              <a class="dropdown-item" (click)="onLogout()"href="#">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400 "></i>
+                  Logout
+              </a>
+          </div>
+      </li>
+      <li class="nav-item" *ngIf="!securityService.kc.authenticated">
+          <a class="fas fa-sign-in-alt" (click)="onLogin()"></a>
+      </li>
+  </ul>
+</nav>

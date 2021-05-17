@@ -1,0 +1,134 @@
+<div class="container-fluid">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <br>
+    <div>
+      <h2 style="margin-left: 2%;display: inline;">Order #{{obj.ID}} {{obj.Order_Status}}</h2>
+      <div class="float-right">
+        <div class="dropdown" style="display: inline-block;">
+          <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">Customer MGT
+          <span class="caret"></span></button> 
+          <div class="dropdown-menu">
+            <a class="dropdown-item" routerLink="/Customer/view/{{obj.CustomerID}}">Customer Dashboard</a>
+            <a class="dropdown-item" routerLink="/Orders/list">Order List</a>
+            <a class="dropdown-item" routerLink="/Casting/list">Castings List</a>
+            <a class="dropdown-item" routerLink="/Books/list">Books List</a>
+            <a class="dropdown-item" routerLink="/Services/list">Services List</a>
+            <a class="dropdown-item" routerLink="/Publications/list">Publications List</a>
+            <a class="dropdown-item" routerLink="/Reviews/list">Reviews List</a>
+          </div>
+        </div>
+        <button class="btn btn-info" style="margin-left: 5px;">View</button><br>
+        <a class="btn btn-primary btn-icon-split float-right" style="margin-top: 5px;" routerLink="/Orders/list">
+          <span class="icon text-white-50">
+            <i class="fas fa-arrow-left"style="color: white;"></i>
+          </span>
+          <span class="text" style="color:white;">Back to List</span>
+        </a>
+      </div>
+    </div>
+    <div class=" shadow mb-4">
+      <table class="table table-borderless" style="background-color: white;color:black;">
+        <thead>
+          <tr>
+            <th id="headTab" colspan="2" >
+              <h3 style="display: inline;"> Orders Informations </h3>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+            
+          <tr>
+            <td class="col-md-3">Bill</td>
+            <td class="col-md-9">{{obj.Bill}}</td>
+          </tr>
+
+          <div class="form-group form-row">
+            <div class="col-md-3">
+                <label for="protected">Order Status</label>
+            </div>
+            <div class="col-md-9">
+                <select class="custom-select form-control" formControlName="orderStatus">
+                    <option value="" disabled selected>Select yout option</option>
+                    <option *ngFor="let stat of status" [selected]="obj.Order_Status===stat">{{stat}}</option>    
+                </select>
+            </div>
+        </div>
+          <tr>
+            <td class="col-md-3">Order Status</td>
+            <p-dropdown [options]="status" formControlName="orderStatus" placeholder="Select a Order Status" optionLabel="orderStatus" [showClear]="true"></p-dropdown>
+            <td class="col-md-9">{{obj.Order_Status}}</td>
+          </tr>
+          <tr>
+            <td class="col-md-3">Created At</td>
+            <td class="col-md-9">{{obj.Created_On}}</td>
+          </tr>
+          <tr>
+            <td class="col-md-3">Paid On</td>
+            <td class="col-md-9"> </td>
+          </tr>
+          <tr>
+            <td class="col-md-3">Paiement Method</td>
+            <td class="col-md-9">{{obj.Payment_Method}}</td>
+          </tr>
+          <tr>
+            <td class="col-md-3">Pricing</td>
+            <td class="col-md-9">
+              <div>
+                <strong>Price without VAT</strong> : {{obj.Product}}<br>
+                <strong>Setup fee without VAT</strong> : {{obj.Product}}<br>
+                <strong>VAT rate</strong> : {{obj.Product}}<br>
+                <strong>Price VAT amount</strong> : {{obj.Product}}<br>
+                <strong>Setup fee VAT amount</strong> : {{obj.Product}}<br>
+                <strong>Total to Pay</strong> : {{obj.Product}}
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br><br>
+    <div class=" shadow mb-4">
+      <table class="table table-borderless" style="background-color: white;color:black;">
+        <thead>
+          <tr>
+            <th id="headTab" colspan="2" >
+              <h3 style="display: inline;"> Ordered Product </h3>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="col-md-3">Product Name</td>
+            <td class="col-md-9">{{obj.Order_Status}}</td>
+          </tr>
+          <tr>
+            <td class="col-md-3">Product Info</td>
+            <td class="col-md-9">
+              <div>
+                Product Name : {{obj.Product}}<br>
+                Quantity : {{obj.Product}}<br>
+                Product Type : {{obj.Product}}<br>
+                Product Price : {{obj.Product}}<br>
+                Recurrence : {{obj.Product}}<br>
+                Credits added : {{obj.Product}}<br>
+                Images allowed : {{obj.Product}}<br>
+                Portfolio allowed : {{obj.Product}}<br>
+                Total Credits : {{obj.Product}}
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="col-md-3">Total Price</td>
+            <td class="col-md-9">{{obj.Created_On}}</td>
+          </tr>
+          <tr>
+            <td class="col-md-3">Promo code Used</td>
+            <td class="col-md-9"> </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</form>
+  </div>
+  
+  

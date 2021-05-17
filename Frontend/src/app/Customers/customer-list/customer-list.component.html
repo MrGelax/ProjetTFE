@@ -1,0 +1,117 @@
+<br>
+
+<!-- <table class="table table-hover">
+<tr *ngFor="let cus of customerService.list">
+    <td>{{cus.id}}]</td>
+    <td>{{cus.lastName}}</td>
+
+
+</tr>
+
+</table> -->
+
+ 
+
+<div class="scrollbar">
+    <div style="padding:1em;line-height:1.5;">
+        <div class="container-fluid" [style]="{width: '1550px'}">
+            <div id="customerTable">
+
+                <div class="shadow mb-4">
+                    <div class="card-header py-3">
+
+                        <h6 class="m-0 font-weight-bold text-primary col-md-9" style="display: inline-block;">Customer List</h6>
+                        <br><br>
+                        <div class="buttons" style="display: block; float: right ; ">
+                            <!-- Bouttons create et Delete-->
+                            <button pButton type="button" class="btn btn-info btn-icon-split" routerLink="/create" style="margin-right: .5em;color: white;">
+                                <span class="icon text-white-50"><i class="fas fa-flag"></i></span>
+                                <span class="text">Create</span>
+                            </button>
+                            <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"></p-confirmDialog>
+                            <button type="button" class="btn btn-danger btn-icon-split" (click)="deleteToList()" icon="pi pi-pencil">
+                                <span class="icon text-white-50"><i class="fas fa-trash" style="color: white;"></i></span>
+                                <span class="text">Delete</span>
+                            </button>
+                            <button (click)="download()" style="margin-left: 7px; background-color: violet; " pButton type="button" class="btn btn-danger btn-icon-split">
+                                <span class="icon text-white-50"><i class="fa fa-arrow-up" style="color: white;"></i></span>
+                                <span class="text">Export CSV</span>
+                            </button>
+                        </div>
+                        <p-tabMenu [model]="items1">
+                        </p-tabMenu>
+                        <div style="padding: 0.5em;">
+                            <router-outlet></router-outlet>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <p-table #tt [columns]="header" [paginator]="true" [rows]="10" [value]="customers">
+                            <ng-template pTemplate="header" let-columns>
+                                <tr>
+                                    <th *ngFor="let col of columns" [pSortableColumn]="col">
+                                        {{col}}<p-sortIcon [field]="col"></p-sortIcon>
+                                    </th>
+                                    <th></th>
+                                    <th style="width: 2% !important;"></th>
+                                </tr>
+                                <tr>
+                                    <th *ngFor="let col of header" [ngSwitch]="col">
+                                        <input *ngSwitchCase="'id'" pInputText type="text"
+                                               class="ui-column-filter form-control"
+                                               (input)="tt.filter($event.target.value, col, col.filterMatchMode)">
+
+                                        <input *ngSwitchCase="'Name'" pInputText type="text"
+                                               class="ui-column-filter form-control"
+                                               (input)="tt.filter($event.target.value, col, col.filterMatchMode)">
+
+                                        <p-multiSelect *ngSwitchCase="'Role'" [options]="roles" [filter]="false" styleClass="ui-column-filter" defaultLabel="ALL" (onChange)="tt.filter($event.value, col, 'in')"></p-multiSelect>
+
+                                        <input *ngSwitchCase="'Email'" pInputText type="text"
+                                               class="ui-column-filter form-control"
+                                               (input)="tt.filter($event.target.value, col, col.filterMatchMode)">
+
+                                        <p-multiSelect *ngSwitchCase="'Status'" [options]="status" [filter]="false" styleClass="ui-column-filter" defaultLabel="ALL" (onChange)="tt.filter($event.value, col, 'in')"></p-multiSelect>
+
+                                        <!-- <input *ngSwitchCase="'Created on'" pInputText type="text" style="width: auto; margin-left: 20px; "
+                                         class="ui-column-filter form-control"
+                                        (input)="tt.filter($event.target.value, col, col.filterMatchMode)"> -->
+
+                                        <p-inputMask *ngSwitchCase="'Created_on'" mask="99/99/9999" class="ui-column-filter" (input)="tt.filter($event.target.value, col, col.filterMatchMode)"></p-inputMask>
+
+                                        <!-- <p-calendar [(ngModel)]="date12"   *ngSwitchCase="'Created on'" [readonlyInput]="true" view="month" dateFormat="mm/yy" [yearNavigator]="true" yearRange="2000:2030" [showIcon]="true" (onChange)="tt.filter($event.target.value, col, col.filterMatchMode)"></p-calendar> -->
+                                        <p-multiSelect *ngSwitchCase="'Rating'" [options]="rating" [filter]="false" styleClass="ui-column-filter" defaultLabel="ALL" (onChange)="tt.filter($event.value, col, 'in')"></p-multiSelect>
+
+                                        <p-multiSelect *ngSwitchCase="'Newsletter'" [options]="newsletter" [filter]="false" styleClass="ui-column-filter" defaultLabel="ALL" (onChange)="tt.filter($event.value, col, 'in')"></p-multiSelect>
+
+                                        <p-multiSelect *ngSwitchCase="'Subscription'" [options]="subscription" [filter]="false" styleClass="ui-column-filter" defaultLabel="ALL" (onChange)="tt.filter($event.value, col, 'in')"></p-multiSelect>
+                                    </th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-rowData let-columns="columns">
+                                <tr  *ngFor="let cus of customerService.list"  >
+                                    <td>{{cus.id}}</td>
+                                    <td>{{cus.lastName}} {{cus.firstName}}</td>
+                                    <td>{{cus.mainRole}}</td>
+                                    <td>{{cus.email}}</td> 
+                                    <td>{{cus.customerStatus}}</td>
+                                    <td>{{cus.createdDateTime}}</td>
+                                    <td>{{cus.lastmodifiedDateTime}}</td>
+                                    <td>{{cus.rating}}</td>
+                                    <td>{{cus.customerSubscription}}</td>
+        
+                                    <td><p-splitButton label="Customer MGT" (onClick)="save('info')" [model]="items" styleClass="ui-button-secondary"></p-splitButton></td>
+                                    <td><input type="checkbox" ></td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- check in -->

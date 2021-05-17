@@ -1,0 +1,137 @@
+<br>
+<div class="mb-4">
+    <table class="table table-borderless" style="border: 1px solid #595959;">
+        <thead>
+            <tr>
+                <th id="headTab" colspan="2" >
+                    <h3 style="display: inline;"> Customer Informations </h3>
+                    <div class="float-right">
+                        <button class="btn btn-danger">BlackList</button>
+                        <p-rating [(ngModel)]="obj.Rating" style="display: inline-block;"></p-rating>
+                        <button class="btn btn-warning" style="margin-left: 5px;"routerLink="/Customer/edit/{{obj.ID}}">Edit</button>
+                    </div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="col-md-4">Id</td>
+                <td class="col-md-8">{{obj.ID}}</td>
+            </tr>
+            <tr>
+                <td class="col-md-4">Subscriprion</td>
+                <td class="col-md-8">{{obj.Subscription.type}}<br>{{obj.Subscription.credit}} Krédits</td>
+            </tr>
+            <tr>
+                <td class="col-md-4">Email</td>
+                <td class="col-md-8">{{obj.Email}}</td>
+            </tr>
+            <tr>
+                <td class="col-md-4">Status</td>
+                <td class="col-md-8">{{obj.Status.validate}}<br>{{obj.Status.dateVal}}</td>
+            </tr>
+            <tr>
+                <td class="col-md-4">Prefered Language</td>
+                <td class="col-md-8">{{obj.Prefered_language}}Test</td>
+            </tr>
+            <tr>
+                <td class="col-md-4">Created On</td>
+                <td class="col-md-8">{{obj.CreatedOn}}</td>
+            </tr>
+            <tr>
+                <td class="col-md-4">Last Modified</td>
+                <td class="col-md-8">{{obj.LastModified}}</td>
+            </tr>
+            <tr>
+                <td class="col-md-4">Rating</td>
+                <td class="col-md-8">{{obj.Rating}}</td>
+            </tr>
+            <tr>
+                <td class="col-md-4">Avatar</td>
+                <td class="col-md-8"><img src="{{obj.Avatar}}" alt=""  height="50px" width="50px"></td>
+            </tr>
+        </tbody>
+        <tbody>
+            <!-- Personal info-->
+            <tr>
+                <td colspan="2"><h3 style="color: #595959;">Personal Informations</h3></td> 
+            </tr>
+            <tr>
+                <td class="col-md-4">Professional Name</td>
+                <td class="col-md-8">{{obj.Name}}</td>
+            </tr>
+            <tr>
+                <td class="col-md-4">Gender</td>
+                <td class="col-md-8">{{obj.Gender}}</td>
+            </tr>
+            <tr>
+                <td class="col-md-4">Birth Date</td>
+                <td class="col-md-8">{{obj.BirthDate}}</td>
+            </tr>
+            <tr>
+                <td class="col-md-4">National Registration Number</td>
+                <td class="col-md-8">{{obj.Nrn}}</td>
+            </tr>
+            <tr>
+                <td class="col-md-4">Private Number</td>
+                <td class="col-md-8">{{obj.Tel}}</td>
+            </tr>
+            <tr>
+                <td class="col-md-4">Talent is a child</td>
+                <td class="col-md-8"> <p *ngIf="obj.IsChild===true">Yes</p> <p *ngIf="obj.IsChild===false">No</p></td> <!--<input type="checkbox" disabled [checked]="obj.IsChild===true">--->
+            </tr>
+            <tr *ngIf="obj.IsChild===true">
+                <td class="col-md-4">Parent First Name</td>
+                <td class="col-md-8">{{obj.ParentFName}}</td>
+            </tr>
+            <tr *ngIf="obj.IsChild===true">
+                <td class="col-md-4">Parent Last Name</td>
+                <td class="col-md-8">{{obj.ParentLName}}</td>
+            </tr>
+        </tbody>
+        <tbody *ngIf="obj.CompanyInfo!==undefined">
+            <!-- Company Info -->
+            <tr>
+                <td colspan="2"><h3 style="color: #595959;">Company Informations</h3></td> 
+            </tr>
+            <tr>
+                <td class="col-md-4">Company Name</td>
+                <td class="col-md-8">{{obj.CompanyInfo.name}}</td>
+            </tr>
+            <tr>
+                <td class="col-md-4">Legal Form</td>
+                <td class="col-md-8">{{obj.CompanyInfo.legalForm}}</td>
+            </tr>
+        </tbody>
+        <tbody>
+            <!-- Company Info -->
+            <tr>
+                <td colspan="2"><h3 style="color: #595959;">Contact Information</h3></td> 
+            </tr>
+            <tr>
+                <td class="col-md-4">Adress</td>
+                <td class="col-md-8">{{obj.Adress.street}},{{obj.Adress.number}} <br>{{obj.Adress.country}}</td>
+            </tr>
+        </tbody>
+        <tbody>
+            <!-- Billing Info -->
+            <tr>
+                <td colspan="2"><h3 style="color: #595959;">Billing Adress</h3></td> 
+            </tr>
+            <tr>
+                <td class="col-md-4">VAT</td>
+                <td class="col-md-8">{{obj.BillingInfo.vat}}</td>
+            </tr>
+            
+            <tr>
+                <td class="col-md-4">IBAN</td>
+                <td class="col-md-8">{{obj.BillingInfo.iban}}</td>
+            </tr>
+            
+            <tr>
+                <td class="col-md-4">BIC</td>
+                <td class="col-md-8">{{obj.BillingInfo.bic}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

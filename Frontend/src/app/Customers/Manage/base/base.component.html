@@ -1,0 +1,46 @@
+<div class="container-fluid">
+    <br>
+    <div>
+        <h2 style="margin-left: 2%;display: inline;">{{customerInfo.Name}} - {{customerInfo.Role}}</h2> {{customerInfo.Company_name}}
+        <div class="float-right">
+            <div class="dropdown" style="display: inline-block;">
+                <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">Customer MGT
+                <span class="caret"></span></button> 
+  
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" [routerLink]="['']">Customer Dashboard</a>
+                    <a class="dropdown-item" [routerLink]="['']">Order List</a>
+                    <a class="dropdown-item" [routerLink]="['']">Castings List</a>
+                    <a class="dropdown-item" [routerLink]="['']">Books List</a>
+                    <a class="dropdown-item" [routerLink]="['']">Services List</a>
+                    <a class="dropdown-item" [routerLink]="['']">Publications List</a>
+                    <a class="dropdown-item" [routerLink]="['']">Reviews List</a>
+                </div>
+            </div>
+            <button class="btn btn-info" style="margin-left: 5px;margin-right: 5px;">View</button>
+                <a class="btn btn-primary btn-icon-split" routerLink="/Pages/list">
+                <span class="icon text-white-50">
+                    <i class="fas fa-arrow-left"style="color: white;"></i>
+                </span>
+                <span class="text" style="color:white;">Back to List</span>
+            </a>
+        </div>
+    </div>
+    <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"></p-confirmDialog>
+    <div class="col-md-7 float-left">
+        <app-customer-infos [obj]="customerInfo"></app-customer-infos>
+        <app-books-info [obj]="customerBooks"></app-books-info>
+        <app-orders-info [obj]="customerOrdInfos"></app-orders-info>
+        <app-communication-info [obj]="customerComsInfos"></app-communication-info>
+        <app-recrutements-info [obj]="customerRecrutementInfo"></app-recrutements-info>
+        <app-comments [obj]="customerComments"></app-comments>
+    </div>
+    <div class="col-md-5 float-right">
+        <app-profile-information [obj]="customerProfilInfo"></app-profile-information>
+        <app-publications-info [obj]="customerPubliInfos"></app-publications-info>
+        <app-review-info [obj]="customerRevInfos"></app-review-info>
+        <app-service-info [obj]="customerServiceInfo"></app-service-info>
+        <app-credits-uses-info [obj]="customerCreditUsesInfo"></app-credits-uses-info>
+    </div>
+</div>
+

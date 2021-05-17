@@ -1,0 +1,95 @@
+<div class="container-fluid">
+    <br> 
+    <div class=" shadow mb-4">
+        <div class="card-header">
+            Create profile 
+        </div>
+        <div class="card-body form">
+            <form #form="ngForm" (submit)="onSubmit(form)">
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <label for="systemName">Type</label>
+                    </div>
+                    <div class="col-md-9">
+                        <select class="custom-select form-control" >
+                            <option value="" disabled selected>Select your option</option>
+                            <option *ngFor="let type of types" >{{type}}</option>    
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <label for="systemName">Métier</label>
+                    </div>
+                    <div class="col-md-9">
+                        <select class="custom-select form-control" >
+                            <option value="" disabled selected>Select your option</option>
+                            <option *ngFor="let job of jobs" >{{job}}</option>    
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <label for="systemName">Nom de l'entreprise</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input name="companyName" #companyName="ngModel" type="text"class="form-control col-md-4"  [(ngModel)]="customerService.formDataFK.companyName">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <label for="systemName">Prénom de la personne de contact</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input name="firstName" #firstName="ngModel" type="text"class="form-control col-md-4"  [(ngModel)]="customerService.formData.firstName">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <label for="systemName">Nom de la personne de contact</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input name="lastName" #lastName="ngModel" type="text"class="form-control col-md-4"  [(ngModel)]="customerService.formData.lastName">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <label for="systemName">Pays</label>
+                    </div>
+                    <div class="col-md-9">
+                        <select class="custom-select form-control" >
+                            <option value="" disabled selected>Select your option</option>
+                            <option *ngFor="let country of countrys" >{{country}}</option>    
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <label for="systemName">Ville</label>
+                    </div>
+                    <div class="col-md-9">
+                        <select class="custom-select form-control">
+                            <option value="" disabled selected>Select yout option</option>
+                            <option *ngFor="let city of citys" >{{city}}</option>    
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <label for="systemName">Email</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input name="email" #email="ngModel" type="text"class="form-control col-md-4"  [(ngModel)]="customerService.formData.email">
+                        <input type="checkbox"  style="margin-top: 20px;"> Envoyer un mail d'invitation
+                    </div>
+                </div>
+                <br>
+                <div class="form-group row float-right">
+                    <a class="btn btn-info" routerLink="../list"><i class="fas fa-arrow-left"></i> Back to List</a>
+                    <button class="btn btn-primary" style="margin-left: 3px" type="submit"><i class="far fa-save"></i> Create</button>
+                </div>
+                <br><br>
+            </form>
+        </div>
+    </div>
+</div>

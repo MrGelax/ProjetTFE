@@ -1,0 +1,78 @@
+<div class="container-fluid">
+    <br>
+    <div >
+      <div class="">
+        <h1 style="display: inline-block;">Manage Page</h1><h6 style="display: inline-block;">{{obj.Title}}</h6>
+        <div class="form-group float-right"style="display: inline-block;">
+          <a class="btn btn-info btn-icon-split" routerLink="/edit"style="margin-left: 3px;display: inline-block;">
+              <span class="icon text-white-50">
+                  <i class="far fa-edit"style="color: white;"></i>
+              </span>
+              <span class="text">Edit</span>
+          </a>
+          <div class="dropdown" style="margin-left: 3px;display: inline-block;">
+            <button class="btn btn-warning dropdown-toggle" type="button" data-toggle="dropdown">View
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li *ngFor="let v of views" (click)="click(v.url)">{{v.Culture}}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class=" shadow mb-4">
+            <table class="table table-borderless" style="background-color: white;color:black;">
+                <thead>
+                    <tr>
+                        <th id="headTab"colspan="12">Details Page - {{obj.Title}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="col-md-3">Id</td>
+                    <td class="col-md-9">{{obj.ID}}</td>
+                  </tr>
+                  <tr>
+                    <td class="col-md-3">Is Prorected</td>
+                    <td class="col-md-9">{{obj.Is_Protected}}</td>
+                  </tr>
+                  <tr>
+                    <td class="col-md-3">System Name</td>
+                    <td class="col-md-9">{{obj.System_Name}}</td>
+                  </tr>
+                  <tr>
+                    <td class="col-md-3">Label</td>
+                    <td class="col-md-9">{{obj.Label}}</td>
+                  </tr>
+                  <tr>
+                    <td class="col-md-3">Title</td>
+                    <td class="col-md-9">{{obj.Title}}</td>
+                  </tr>
+                  <tr>
+                    <td class="col-md-3">Main Content</td>
+                    <td class="col-md-9"><p>{{obj.Main_Content}}</p></td>
+                  </tr>
+                </tbody>
+              </table>
+            <div class="form-group row float-right">
+                <a class="btn btn-primary btn-icon-split" routerLink="/Pages/list">
+                    <span class="icon text-white-50">
+                        <i class="fas fa-arrow-left"style="color: white;"></i>
+                    </span>
+                    <span class="text" style="color:white;">Back to List</span>
+                </a>
+                <a class="btn btn-info btn-icon-split" routerLink="/edit"style="margin-left: 3px">
+                    <span class="icon text-white-50">
+                        <i class="far fa-edit"style="color: white;"></i>
+                    </span>
+                    <span class="text">Edit</span>
+                </a>
+                <a class="btn btn-danger btn-icon-split" href="#"style="margin-left: 3px;margin-right:10px;" (click)="backtoList()">
+                    <span class="icon text-white-50">
+                        <i class="fas fa-trash" style="color: white;"></i>
+                    </span>
+                    <span class="text">Delete</span>
+                </a>
+            </div>
+    </div>
+</div>

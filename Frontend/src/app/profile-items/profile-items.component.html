@@ -1,0 +1,191 @@
+<div id="mainContent">
+    <h6>Role</h6>
+    <p-dropdown [options]="profileroles" [(ngModel)]="selectedRole" optionLabel="name"></p-dropdown>
+    <p-tieredMenu [model]="items"></p-tieredMenu>
+      
+    <div id="sectionStyle">
+      <h3 style="float: left;" class="first">Sections</h3>
+      <button style="margin-left: 3%;" type="text" data-toggle="modal" data-target="#addSectionModal"  pButton icon="pi pi-plus" label="Add"></button>
+    </div>
+    
+    <button style="margin-left: -73%; float: right;" id="addProfileItemBtn"  type="text"  pButton icon="pi pi-plus" label="Add profile item" data-toggle="modal" data-target="#editProfileItem"></button>
+    
+    
+    <div class="ui-g" id="radiobuttonsSections" style="width:250px;margin-bottom:10px">
+        <div style="margin-left: -35%; float: left;" class="ui-g-12">
+          <i class="pi pi-ellipsis-h" draggable="true" ondragstart="drag(event)" id="drag1"><p-radioButton id="measure" onclick="showButtons();" name="group1" value="Measurements" label="Measurements"  [(ngModel)]="val1" inputId="opt1"></p-radioButton>
+        <div class="ui-g-12"><i class="pi pi-ellipsis-h" draggable="true" ondragstart="drag(event)" id="drag2"><p-radioButton id="height"  onclick="showButtons();" name="group1" value="Height"  label="Height" [(ngModel)]="val1" inputId="opt2" ></p-radioButton></i></div>
+        <div class="ui-g-12"><i class="pi pi-ellipsis-h" draggable="true" ondragstart="drag(event)" id="drag3"><p-radioButton id="weight" onclick="showButtons();" name="group1" value="Weight" label="Weight" [(ngModel)]="val1" inputId="opt3"></p-radioButton></i></div>
+      </i></div>
+        <div ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: -35%;" class="ui-g-12"><i class="pi pi-ellipsis-h" draggable="true" ondragstart="drag(event)" id="drag4"><p-radioButton id="portfolio" onclick="showButtons();" name="group2" value="Portfolio" label="Portfolio" [(ngModel)]="val1" inputId="opt4"></p-radioButton>
+        <div class="ui-g-12"><i class="pi pi-ellipsis-h" draggable="true" ondragstart="drag(event)" id="drag5"><p-radioButton id="books" onclick="showButtons();" name="group2" value="Books" label="Books" [(ngModel)]="val1" inputId="opt5"></p-radioButton></i></div>
+        </i>
+        </div>
+          </div>
+          
+          <div id="buttons">
+            <button style="float: left;" type="button"class="btn btn-info btn-icon-split" icon="pi pi-pencil" data-toggle="modal" data-target="#editProfileItem">
+                <span class="icon text-white-50"><i class="far fa-edit"style="color: white;"></i></span>
+                <span class="text">Edit</span>
+              </button>
+              <!-- <p-confirmDialog header="Delete item" icon="pi pi-exclamation-triangle"></p-confirmDialog> -->
+              <button style="margin-left: 1%;"  type="button"class="btn btn-danger btn-icon-split"  icon="pi pi-pencil" data-toggle="modal" data-target="#deleteModal">
+                <span class="icon text-white-50"><i class="fas fa-trash"style="color: white;"></i></span>
+                <span class="text">Delete</span>
+              </button>
+              </div>
+              
+        <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div></div>
+    
+     
+      <!-- Delete Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h6 class="modal-title" id="exampleModalLongTitle">Delete item</h6>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <br><br>
+              <p style="color: black;">Do you confirm deleting this item?</p>
+              <br>
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="deleteGlobally">
+                <label class="custom-control-label" for="deleteGlobally">Delete globally</label>
+            </div>
+            <br><br>
+    
+            </div>
+            <div class="modal-footer">
+                <button type="button" onclick="deleteAll()" data-dismiss="modal"  class="btn btn-danger">Confirm</button>
+              <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    
+      <!-- Add section Modal -->
+      <div class="modal fade" id="addSectionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Add section for role </h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                 <!-- Edit Modal -->
+                      <div id="editSection">
+                        <h6 class="first">System name</h6>
+                      <input class="systemName" type="text" size="30" pInputText [(ngModel)]="text"> 
+                              <br><br>    
+                      <h6>Translations</h6>
+                      <p-dropdown [options]="languageRoles" [(ngModel)]="selectedLanguage" optionLabel="name"></p-dropdown>
+                      <input style="margin-left: 3%;" class="translatedSM" type="text" size="30" pInputText [(ngModel)]="translated">
+                      <br> 
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="defaultUnchecke">
+                        <br>
+                        <label class="custom-control-label" for="defaultUnchecke">Global</label>
+                      </div>
+                      </div>
+    
+                      <!-- Add Modal -->
+                    <div id="addSection">
+                    <h6>Select an existing section</h6>
+                    <p-dropdown [options]="sections" [(ngModel)]="selectedSection" optionLabel="name"></p-dropdown>
+                    <button onclick="addSection()" style="margin-left: 5%;"  type="button"class="btn btn-info btn-icon-split" icon="pi pi-pencil">
+                      <span class="icon text-white-50"><i class="far fa-edit"style="color: white;"></i></span>
+                      <span class="text">Edit</span>
+                    </button>
+                    <button onclick="addSection()" style="margin-left: 5%;"  type="text"  pButton icon="pi pi-plus" label="Create section"></button>
+                    </div>
+                    <br><br><br><br>
+            </div>
+            <div class="modal-footer">
+              <div id="saveBtn">
+              <button type="text" pButton label="Save" data-dismiss="modal"></button>
+              <button onclick="cancel()" type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+              </div>
+              <div id="addBtn">
+              <button type="text" pButton label="Add" data-dismiss="modal"></button>
+              <button onclick="cancel()" type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    
+      <!-- Add profile item Modal -->
+      <div class="modal fade" id="editProfileItem" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Edit profile item </h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                 <!-- Edit Modal -->
+                      <div id="profileItemEdit">
+                        <h6 class="first">System name</h6>
+                      <input class="systemName" type="text" size="30" pInputText [(ngModel)]="text"> 
+                       <br><br>       
+                      <h6>Translations</h6>
+                      <p-dropdown [options]="languageRoles" [(ngModel)]="selectedLanguage" optionLabel="name"></p-dropdown>
+                      <input style="margin-left: 3%;" class="translatedSM" type="text" size="30" pInputText [(ngModel)]="translated">
+                      <br><br>
+                      <h6>Editor</h6>
+                      <p-dropdown [options]="editors" [(ngModel)]="selectedEditor" optionLabel="name"></p-dropdown>
+                      <br><br>
+                      <h5>Setup</h5> 
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="setupCheckbox" onclick="showTable()">
+                        <label class="custom-control-label" for="setupCheckbox">Vary by subscription</label>
+                      </div>
+                        <table id="setupTable" class="table table-striped">
+                          <thead>
+                            <tr>
+                              <th scope="col"></th>
+                              <th scope="col">Ristretto</th>
+                              <th scope="col">Espresso</th>
+                              <th scope="col">Lungo</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>Max. series</td>
+                              <td><input class="numberInput" type="number" pInputText/>
+                            </td>
+                            <td><input class="numberInput" type="number" pInputText/>
+                            </td>                          
+                            <td><input class="numberInput" type="number" pInputText/>
+                            </td>
+                            </tr>
+                            <tr>
+                              <td>Max. items per series</td>
+                              <td><input class="numberInput" type="number" pInputText/>
+                              </td>
+                              <td><input class="numberInput" type="number" pInputText/>
+                              </td>                          
+                              <td><input class="numberInput" type="number" pInputText/>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>                     
+                      </div>
+                      </div>
+                      <div id="modalfooter" class="modal-footer">
+                        <button type="text" pButton label="Save" data-dismiss="modal"></button>
+                        <button onclick="cancel()" type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+                      </div>
+            </div>
+          </div>
+        </div>

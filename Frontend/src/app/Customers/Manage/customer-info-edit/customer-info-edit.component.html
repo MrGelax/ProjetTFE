@@ -1,0 +1,254 @@
+<div class="container-fluid">
+    <br>
+    <div class=" shadow mb-4">
+        <div class="card-header" id="headTab">
+            <h3>Edit Customer Informations - {{obj.Name}} </h3>
+        </div>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="card-body form">
+                <div class="form-group form-row">
+                    <div class="col-md-3">
+                        <label>ID</label>
+                    </div>
+                    <div class="col-md-9">
+                        <p>{{obj.ID}}</p>
+                    </div>
+                </div>
+                <div class="form-group form-row">
+                    <div class="col-md-3">
+                        <label>Email</label>
+                    </div>
+                    <div class="col-md-9">
+                        <p>{{obj.Email}}</p>
+                    </div>
+                </div>
+                <div class="form-group form-row">
+                    <div class="col-md-3">
+                        <label>Status</label>
+                    </div>
+                    <div class="col-md-9">
+                        <select formControlName="status"[(ngModel)]="obj.Status.validate">
+                            <option value="Validated" [selected]="obj.Status.validate=='Validated'">Validated</option>
+                            <option value="Archiveted" [selected]="obj.Status.validate=='Archiveted'">Archiveted</option>
+                            <option value="Blacklisted"[selected]="obj.Status.validate=='Blacklisted'">Blacklisted</option>
+                            <option value="Created" [selected]="obj.Status.validate=='Created'">Created</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="form-group form-row">
+                    <div class="col-md-3">
+                        <label>Rating</label>
+                    </div>
+                    <div class="col-md-9">
+                        <p-rating [(ngModel)]="obj.Rating" style="display: inline-block;"formControlName="rating"></p-rating>
+                    </div>
+                </div>
+                <div class="form-group form-row">
+                    <div class="col-md-3">
+                        <label>Subscription</label>
+                    </div>
+                    <div class="col-md-9">
+                        {{obj.Subscription.type}} - {{obj.Subscription.credit}} Krédits
+                    </div>
+                </div>
+                <div class="form-group form-row">
+                    <div class="col-md-3">
+                        <label>Avatar</label>
+                    </div>
+                    <div class="col-md-9">
+                        <p-fileUpload name="avatar" accept="image/*"
+                            [showUploadButton]="false"
+                            [showCancelButton]="false"
+                            (onSelect)="setAvatar($event)"></p-fileUpload>
+                    </div>
+                </div>
+                <div class="form-group form-row">
+                    <div class="col-md-3">
+                        <label>Prefered language</label>
+                    </div>
+                    <div class="col-md-9">
+                        <select formControlName="prefedLang" [(ngModel)]="obj.Prefered_language">
+                            <option value="Frensh" [selected]="obj.Prefered_language=='Frensh'">Frensh</option>
+                            <option value="English" [selected]="obj.Prefered_language=='English'">English</option>
+                            <option value="Spanish" [selected]="obj.Prefered_language=='Spanish'">Spanish</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group form-row">
+                    <div class="col-md-3">
+                        <label>Created on</label>
+                    </div>
+                    <div class="col-md-9">
+                        <p>{{obj.CreatedOn}}</p>
+                    </div>
+                </div>
+                <div class="form-group form-row">
+                    <div class="col-md-3">
+                        <label>Last Modified</label>
+                    </div>
+                    <div class="col-md-9">
+                        <p> {{obj.LastModified}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-header">
+                <h3 style="color: #595959;">Personal Information</h3>
+            </div>
+            <div class="card-body form">
+                <div class="form-group form-row">
+                    <div class="col-md-3">
+                        <label>Professional Name</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="text" value="{{obj.Name}}" formControlName="name">
+                    </div>
+                </div>
+                <div class="form-group form-row">
+                    <div class="col-md-3">
+                        <label>Gender</label>
+                    </div>
+                    <div class="col-md-9">
+                        <select formControlName="gender">
+                            <option value="Homme" [selected]="obj.Gender=='Homme'">Homme</option>
+                            <option value="Femme"[selected]="obj.Gender=='Femme'">Femme</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group form-row">
+                    <div class="col-md-3">
+                        <label>Birth Date</label>
+                    </div>
+                    <div class="col-md-9">
+                        <p-inputMask mask="99/99/9999" [(ngModel)]="obj.BirthDate" placeholder="10/05/1990" slotChar="mm/dd/yyyy" formControlName="birthDay"></p-inputMask>
+                    </div>
+                </div>
+                <div class="form-group form-row">
+                    <div class="col-md-3">
+                        <label>National Registration Number</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="text" formControlName="nrm" value="{{obj.Nrn}}">
+                    </div>
+                </div>
+                <div class="form-group form-row">
+                    <div class="col-md-3">
+                        <label>Private Number</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="tel" value="{{obj.Tel}}" formControlName="tel">
+                    </div>
+                </div>
+                <div class="form-group form-row">
+                    <div class="col-md-3">
+                        <label>Talent is a child</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="checkbox" [checked]="obj.IsChild==='true'" [(ngModel)]="obj.IsChild" formControlName="isChild">
+                    </div>
+                </div>
+                <div class="form-group form-row" *ngIf="obj.IsChild===true">
+                    <div class="col-md-3">
+                        <label>Parent First Name</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="text" formControlName="parentFName">
+                    </div>
+                </div>
+                <div class="form-group form-row" *ngIf="obj.IsChild===true">
+                    <div class="col-md-3">
+                        <label>Parent Last Name</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="text"formControlName="parentLName">
+                    </div>
+                </div>
+            </div>
+            <div class="card-header">
+                <h3 style="color: #595959;">Company Informations</h3>
+            </div>
+            <div class="card-body form">
+                <div class="form-group form-row">
+                    <div class="col-md-3">
+                        <label>Company Name</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="text" formControlName="companyName">
+                    </div>
+                </div>
+                <div class="form-group form-row">
+                    <div class="col-md-3">
+                        <label>Legal Form</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="text" formControlName="legalForm">
+                    </div>
+                </div>
+            </div>
+            <div class="card-header">
+                <h3 style="color: #595959;">Adress Information</h3>
+            </div>
+            <div class="card-body form" formGroupName="adress">
+                <div class="form-group form-row">
+                    <div class="col-md-3">
+                        <label>Street</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="text" formControlName="street">
+                    </div>
+                </div>
+                <div class="form-group form-row">
+                    <div class="col-md-3">
+                        <label>Number</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="text"  formControlName="number">
+                    </div>
+                </div>
+                <div class="form-group form-row">
+                    <div class="col-md-3">
+                        <label>Country</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="text" formControlName="country">
+                    </div>
+                </div>
+            </div>
+            <div class="card-header">
+                <h3 style="color: #595959;">Billing Infromations</h3>
+            </div>
+            <div class="card-body form" formGroupName="billingInfo">
+                <div class="form-group form-row">
+                    <div class="col-md-3">
+                        <label>VAT</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="text"  formControlName="vat">
+                    </div>
+                </div>
+                <div class="form-group form-row">
+                    <div class="col-md-3">
+                        <label>IBAN</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="text"formControlName="iban">
+                    </div>
+                </div>
+                <div class="form-group form-row">
+                    <div class="col-md-3">
+                        <label>BIC</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="text"formControlName="bic">
+                    </div>
+                </div>
+            </div>
+            <p style="color: black;">{{form.value|json}}</p>
+            <br>
+            <div class="form-group row float-right">
+                <button class="btn btn-primary" style="margin-left: 3px" type="submit"><i class="far fa-save"></i> Save</button>
+            </div>
+        </form>
+        <br><br>
+    </div>
+</div>

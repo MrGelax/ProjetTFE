@@ -1,0 +1,67 @@
+<div class="container-fluid">
+    <br>
+    <div class=" shadow mb-4">
+        <div class="card-header">
+            Edit page - ACCOUNT_INCREASE_MY_VISIBILTY
+        </div>
+        <div class="card-body form">
+            <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+                        <div class="form-group form-row">
+                            <div class="col-md-3">
+                                <label for="label">ID</label>
+                            </div>
+                            <div class="col-md-9">
+                                <input type="text" id="ID" class="form-control" name="ID" disabled ngModel required/>
+                            </div>
+                        </div>
+                  
+                    <div class="form-group form-row">
+                        <div class="col-md-3">
+                            <label for="SystemName">System Name</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" id="SystemName" disabled name="SystemName" ngModel required/>
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <div class="col-md-3">
+                            <label for="SystemName">Label</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" id="label" name="label" ngModel required/>
+                        </div>
+                    </div>
+                  
+                    <div class="form-group form-row">
+                        <label for="exampleFormControlSelect1" class="col-md-8"></label>
+                        <select class="custom-select form-control col-md-2" name="language" ngModel required>
+                            <option value="" disabled selected style="opacity: 0.5;">Select a Language</option>
+                            <option>FR</option>
+                            <option>EN</option>
+                        </select>
+                        <select class="custom-select form-control col-md-2" name="duplicateTo">
+                            <option value="" disabled selected>PlaceHolder</option>
+                            <option>FR</option>
+                            <option>EN</option>
+                          </select>
+                    </div>
+  
+                    <div class="form-group form-row">
+                        <div class="col-md-3">
+                            <label for="contentMain">Body</label>
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <div class="col-md">
+                            <textarea class="form-control" id="contentMain" rows="10" name="contentMain" ngModel></textarea>
+                        </div>
+                    </div>
+                  
+                    <div class="form-group row float-right">
+                        <a class="btn btn-info" href="#"><i class="fas fa-arrow-left"></i> Back to List</a>
+                        <button class="btn btn-primary" href="#" style="margin-left: 3px" type="submit"><i class="far fa-save"></i> Save</button>
+                    </div>
+                    <br><br>
+            </form>
+        </div>
+</div>

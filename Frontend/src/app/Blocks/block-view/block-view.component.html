@@ -1,0 +1,67 @@
+<div class="container-fluid">
+    <br>
+    <div class="row">
+      <div class="col-md">
+        <h1 class="">Manage Block</h1><h6>{{obj.label}}</h6>
+      </div>
+    </div>
+    <div class=" shadow mb-4">
+            <table class="table table-borderless" style="background-color: white;color:black;">
+                <thead>
+                    <tr>
+                        <th id="headTab"colspan="12">Details Block - {{obj.label}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="col-md-3">Id</td>
+                    <td class="col-md-9">{{obj.id}}</td>
+                  </tr>
+                  <tr>
+                    <td class="col-md-3">Label</td>
+                    <td class="col-md-9">{{obj.label}}</td>
+                  </tr>
+                  <tr>
+                    <td class="col-md-3">System Name</td>
+                    <td class="col-md-9">{{obj.systemName}}</td>
+                  </tr>
+                  <tr>
+                    <td class="col-md-3">Body</td>
+                    <td class="col-md-9">{{obj.body}}</td>
+                  </tr>
+                  <tr>
+                      <td class="col-md-3">Created Date</td>
+                      <td class="col-md-9">{{obj.createdDateTime}}</td>
+                  </tr>
+                  <tr>
+                      <td class="col-md-3">Last Modified Date</td>
+                      <td class="col-md-9">{{obj.lastModifiedDateTime}}</td>
+                  </tr>
+                  <tr>
+                      <td class="col-md-3">Deleted Date</td>
+                      <td class="col-md-9">{{obj.deletedDateTime}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            <div class="form-group row float-right">
+                <a class="btn btn-primary btn-icon-split" routerLink="/Blocks/list">
+                    <span class="icon text-white-50">
+                        <i class="fas fa-arrow-left"style="color: white;"></i>
+                    </span>
+                    <span class="text" style="color:white;">Back to List</span>
+                </a>
+                <a class="btn btn-info btn-icon-split" routerLink="/edit"style="margin-left: 3px">
+                    <span class="icon text-white-50">
+                        <i class="far fa-edit"style="color: white;"></i>
+                    </span>
+                    <span class="text">Edit</span>
+                </a>
+                <a class="btn btn-danger btn-icon-split" href="#"style="margin-left: 3px;margin-right:10px;" (click)="backtoList()">
+                    <span class="icon text-white-50">
+                        <i class="fas fa-trash" style="color: white;"></i>
+                    </span>
+                    <span class="text">Delete</span>
+                </a>
+            </div>
+    </div>
+</div>

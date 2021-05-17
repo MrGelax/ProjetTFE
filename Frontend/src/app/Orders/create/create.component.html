@@ -1,0 +1,103 @@
+<div class="container-fluid">
+    <br>
+    <div class=" shadow mb-4">
+        <div class="card-header">
+            Create Order
+        </div>
+        <div class="card-body form">
+                <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                    <div class="form-group form-row">
+                        <div class="col-md-3">
+                            <label for="protected">Product</label>
+                        </div>
+                        <div class="col-md-9">
+                            <select class="custom-select form-control" formControlName="product" style="width:30%;">
+                                <option value="" disabled selected>Select yout option</option>
+                                <option *ngFor="let lang of languages" >{{lang}}</option>    
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-3">
+                            <label for="systemName">Quantity</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="number"class="form-control " formControlName="quanty" style="width:30%;"/>
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <div class="col-md-3">
+                            <label for="label">Promo Code</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" id="promoCode" class="form-control"formControlName="promoCode" style="width:30%;"/>
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <div class="col-md-3">
+                            <label for="active">Status</label>
+                        </div>
+                        <div class="col-md-9">
+                            <select class="custom-select form-control" formControlName="status" style="width:30%;">
+                                <option value="" disabled selected>Select yout option</option>
+                                <option *ngFor="let lang of languages" >{{lang}}</option>    
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <div class="col-md-3">
+                            <label for="title">Creation date</label>
+                        </div>
+                        <div class="col-md-9">
+                            <p-calendar dateFormat="dd/mm/yy" formControlName="creationdate"></p-calendar>
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <div class="col-md-3">
+                            <label for="title">Payement date</label>
+                        </div>
+                        <div class="col-md-9" >
+                            <p-calendar dateFormat="dd/mm/yy" formControlName="payementdate"></p-calendar>
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <div class="col-md-3">
+                            <label for="protected">PayementMode</label>
+                        </div>
+                        <div class="col-md-9">
+                            <select class="custom-select form-control" formControlName="payeMethod"style="width:30%;">
+                                <option value="" disabled selected>Select yout option</option>
+                                <option *ngFor="let method of payeMethod" >{{method}}</option>    
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <div class="col-md-3">
+                            <label for="label">Numéro de TVA du client</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control"formControlName="tvaCli"style="width:30%;"/>
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <div class="col-md-3">
+                            <label for="label">Taux de TVA appliqué</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control"formControlName="tvaTaux"style="width:30%;"/>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group row float-right">
+                        <a class="btn btn-info" routerLink="../list"><i class="fas fa-arrow-left"></i> Back to List</a>
+                        <button class="btn btn-primary" style="margin-left: 3px" type="submit" [disabled]="!form.valid"><i class="far fa-save"></i> Save</button>
+                    </div>
+                    <br><br>
+                </form>
+                <p>{{form.value|json}}</p>
+                <p>
+                    Form Status: {{form.status}}
+                  </p>
+        </div>
+    </div>
+</div>

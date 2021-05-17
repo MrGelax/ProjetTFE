@@ -1,0 +1,48 @@
+#measure, #portfolio {
+    font-size: 20px;
+}
+
+#buttons, #editSection, #saveBtn, #setupTable {
+    display: none;
+}
+
+.numberInput {
+    width: 45%;
+}
+
+.modal-dialog {
+    max-width: 70% !important; /*New width for default modal */
+  }
+
+
+  #mainContent {
+      margin-left: 50%;
+  }
+
+  #sectionStyle {
+      margin-left: 10%;
+      margin-top: 10%;
+  }
+
+  #buttons {
+      margin-left: 50%;
+      margin-top: 10% !important;
+  }
+
+  #div2 {
+    width: 200px;
+    height: 300px;
+    border: 1px solid transparent;
+  }
+
+  #books, #height, #weight {
+      font-size: 16px;
+  }
+
+  p-tieredMenu {
+      float: left;
+      margin-left: -80%;
+  }
+
+ 
+  

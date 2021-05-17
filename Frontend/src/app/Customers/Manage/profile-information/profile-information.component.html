@@ -1,0 +1,241 @@
+<br>
+<div class="mb-4">
+    <table class="table table-borderless">
+        <thead>
+            <tr>
+                <th id="headTab" colspan="2" ><h3 style="display: inline;"> Profils Informations </h3>
+                    <button class="btn btn-warning float-right"routerLink="/CustomerProfilInfo/edit/{{obj.ID}}">Edit</button>
+                </th>
+            </tr>
+        </thead>
+        <tbody style="border: 1px solid #595959;">
+            <p-accordion>
+                <p-accordionTab header="Secteur">
+                    <div class="row">
+                        <div *ngIf="obj.Secteur.archi!==true" class="col-6">Architecture</div>
+                        <div *ngIf="obj.Secteur.archi===true"class="col-6"><strong>Architecture</strong></div>
+                        <div *ngIf="obj.Secteur.archi===true"class="col-6"><strong>Yes</strong></div>
+                    </div><hr>
+                    <div class="row">
+                        <div *ngIf="obj.Secteur.cine!==true" class="col-6">Cinéma</div>
+                        <div *ngIf="obj.Secteur.cine===true"class="col-6"><strong>Cinéma</strong></div>
+                        <div *ngIf="obj.Secteur.cine===true"class="col-6"><strong>Yes</strong></div>
+                    </div><hr>
+                    <div class="row">
+                        <div *ngIf="obj.Secteur.mode!==true" class="col-6">Mode</div>
+                        <div *ngIf="obj.Secteur.mode===true"class="col-6"><strong>Mode</strong></div>
+                        <div *ngIf="obj.Secteur.mode===true"class="col-6"><strong>Yes</strong></div>
+                    </div><hr>
+                    <div class="row">
+                        <div *ngIf="obj.Secteur.event!==true" class="col-6">Evènement</div>
+                        <div *ngIf="obj.Secteur.event===true"class="col-6"><strong>Evènement</strong></div>
+                        <div *ngIf="obj.Secteur.event===true"class="col-6"><strong>Yes</strong></div>
+                    </div><hr>
+                    <div class="row">
+                        <div *ngIf="obj.Secteur.artsSpec!==true" class="col-6">Arts du Spectacle</div>
+                        <div *ngIf="obj.Secteur.artsSpec===true"class="col-6"><strong>Arts du Spectacle</strong></div>
+                        <div *ngIf="obj.Secteur.artsSpec===true"class="col-6"><strong>Yes</strong></div>
+                    </div><hr>
+                    <div class="row">
+                        <div *ngIf="obj.Secteur.musique!==true" class="col-6">Musique</div>
+                        <div *ngIf="obj.Secteur.musique===true"class="col-6"><strong>Musique</strong></div>
+                        <div *ngIf="obj.Secteur.musique===true"class="col-6"><strong>Yes</strong></div>
+                    </div><hr>
+                    <div class="row">
+                        <div *ngIf="obj.Secteur.theatre!==true" class="col-6">Theatre</div>
+                        <div *ngIf="obj.Secteur.theatre===true"class="col-6"><strong>Theatre</strong></div>
+                        <div *ngIf="obj.Secteur.theatre===true"class="col-6"><strong>Yes</strong></div>
+                    </div><hr>
+                    <div class="row">
+                        <div *ngIf="obj.Secteur.tVMedia!==true" class="col-6">TV/Médias</div>
+                        <div *ngIf="obj.Secteur.tVMedia===true"class="col-6"><strong>TV/Médias</strong></div>
+                        <div *ngIf="obj.Secteur.tVMedia===true"class="col-6"><strong>Yes</strong></div>
+                    </div><hr>
+                    <div class="row">
+                        <div *ngIf="obj.Secteur.miniDoc!==true" class="col-6">Plateaux TV et mini documentaires</div>
+                        <div *ngIf="obj.Secteur.miniDoc===true"class="col-6"><strong>Plateaux TV et mini documentaires</strong></div>
+                        <div *ngIf="obj.Secteur.miniDoc===true"class="col-6"><strong>Yes</strong></div>
+                    </div><hr>
+                    <div class="row">
+                        <div *ngIf="obj.Secteur.platMultiCam!==true" class="col-6">Émissions TV, plateaux multi-caméras</div>
+                        <div *ngIf="obj.Secteur.platMultiCam===true"class="col-6"><strong>Émissions TV, plateaux multi-caméras</strong></div>
+                        <div *ngIf="obj.Secteur.platMultiCam===true"class="col-6"><strong>Yes</strong></div>
+                    </div><hr>
+                </p-accordionTab>
+                <p-accordionTab header="Spécialisation">
+                    <div class="row">
+                        <div *ngIf="obj.Specialisation.accessoires!==true" class="col-6">Accessoires</div>
+                        <div *ngIf="obj.Specialisation.accessoires===true"class="col-6"><strong>Accessoires</strong></div>
+                        <div *ngIf="obj.Specialisation.accessoires===true"class="col-6"><strong>Yes</strong></div>
+                    </div><hr>
+                    <div class="row">
+                        <div *ngIf="obj.Specialisation.shoot_Com!==true" class="col-6">Shooting Commercial</div>
+                        <div *ngIf="obj.Specialisation.shoot_Com===true"class="col-6"><strong>Shooting Commercial</strong></div>
+                        <div *ngIf="obj.Specialisation.shoot_Com===true"class="col-6"><strong>Yes</strong></div>
+                    </div><hr>
+                    <div class="row">
+                        <div *ngIf="obj.Specialisation.deco!==true" class="col-6">Décors</div>
+                        <div *ngIf="obj.Specialisation.deco===true"class="col-6"><strong>Décors</strong></div>
+                        <div *ngIf="obj.Specialisation.deco===true"class="col-6"><strong>Yes</strong></div>
+                    </div><hr>
+                    <div class="row">
+                        <div *ngIf="obj.Specialisation.effetsFx!==true" class="col-6">Effets spéciaux</div>
+                        <div *ngIf="obj.Specialisation.effetsFx===true"class="col-6"><strong>Effets spéciaux</strong></div>
+                        <div *ngIf="obj.Specialisation.effetsFx===true"class="col-6"><strong>Yes</strong></div>
+                    </div><hr>
+                    <div class="row">
+                        <div *ngIf="obj.Specialisation.defile!==true"class="col-6">Défilé</div>
+                        <div *ngIf="obj.Specialisation.defile===true"class="col-6"><strong>Défilé</strong></div>
+                        <div *ngIf="obj.Specialisation.defile===true"class="col-6"><strong>Yes</strong></div>
+                    </div><hr>
+                </p-accordionTab>
+                <p-accordionTab header="Compétences">
+                    <div class="row">
+                        <div *ngIf="obj.Competence.art!==true" class="col-6">Art</div>
+                        <div *ngIf="obj.Competence.art===true"class="col-6"><strong>Art</strong></div>
+                        <div *ngIf="obj.Competence.art===true"class="col-6"><strong>Yes</strong></div>
+                    </div><hr>
+                    <div class="row">
+                        <div *ngIf="obj.Competence.regi_Lum!==true" class="col-6">Régisseur lumière</div>
+                        <div *ngIf="obj.Competence.regi_Lum===true"class="col-6"><strong>Régisseur lumière</strong></div>
+                        <div *ngIf="obj.Competence.regi_Lum===true"class="col-6"><strong>Yes</strong></div>
+                    </div><hr>
+                    <div class="row">
+                        <div *ngIf="obj.Competence.regiSon!==true" class="col-6">Régisseur son</div>
+                        <div *ngIf="obj.Competence.regiSon===true"class="col-6"><strong>Régisseur son</strong></div>
+                        <div *ngIf="obj.Competence.regiSon===true"class="col-6"><strong>Yes</strong></div>
+                    </div><hr>
+                    <div class="row">
+                        <div *ngIf="obj.Competence.staf!==true" class="col-6">Staffeur</div>
+                        <div *ngIf="obj.Competence.staf===true"class="col-6"><strong>Staffeur</strong></div>
+                        <div *ngIf="obj.Competence.staf===true"class="col-6"><strong>Yes</strong></div>
+                    </div><hr>
+                    <div class="row">
+                        <div *ngIf="obj.Competence.menui!==true" class="col-6">Menuisier</div>
+                        <div *ngIf="obj.Competence.menui===true"class="col-6"><strong>Menuisier</strong></div>
+                        <div *ngIf="obj.Competence.menui===true"class="col-6"><strong>Yes</strong></div>
+                    </div><hr>
+                    <div class="row">
+                        <div *ngIf="obj.Competence.studio!==true" class="col-6">Studio</div>
+                        <div *ngIf="obj.Competence.studio===true"class="col-6"><strong>Studio</strong></div>
+                        <div *ngIf="obj.Competence.studio===true"class="col-6"><strong>Yes</strong></div>
+                    </div><hr>
+                    <div class="row">
+                        <div *ngIf="obj.Competence.constru!==true" class="col-6">Constructeur</div>
+                        <div *ngIf="obj.Competence.constru===true"class="col-6"><strong>Constructeur</strong></div>
+                        <div *ngIf="obj.Competence.constru===true"class="col-6"><strong>Yes</strong></div>
+                    </div><hr>
+                    <div class="row">
+                        <div *ngIf="obj.Competence.ensemblier!==true" class="col-6">Ensemblier</div>
+                        <div *ngIf="obj.Competence.ensemblier===true"class="col-6"><strong>Ensemblier</strong></div>
+                        <div *ngIf="obj.Competence.ensemblier===true"class="col-6"><strong>Yes</strong></div>
+                    </div><hr>
+                    <div class="row">
+                        <div *ngIf="obj.Competence.peintre!==true" class="col-6">Peintre</div>
+                        <div *ngIf="obj.Competence.peintre===true"class="col-6"><strong>Peintre</strong></div>
+                        <div *ngIf="obj.Competence.peintre===true"class="col-6"><strong>Yes</strong></div>
+                    </div><hr>
+                    <div class="row">
+                        <div *ngIf="obj.Competence.lum!==true" class="col-6">Lumière</div>
+                        <div *ngIf="obj.Competence.lum===true"class="col-6"><strong>Lumière</strong></div>
+                        <div *ngIf="obj.Competence.lum===true"class="col-6"><strong>Yes</strong></div>
+                    </div><hr>
+                </p-accordionTab>
+                <p-accordionTab header="Expérience">
+                    <div class="row">
+                        <div *ngIf="obj.Experience.presentation===''" class="col-6">Courte Presentation</div>
+                        <div *ngIf="obj.Experience.presentation!==''"class="col-6"><strong>Courte Presentation</strong></div>
+                        <div *ngIf="obj.Experience.presentation!==''"class="col-6"><strong>{{obj.Experience.presentation}}</strong></div>
+                    </div><hr>
+                    <div class="row">
+                        <div *ngIf="obj.Experience.ansExp===0" class="col-6">Années de Pratique</div>
+                        <div *ngIf="obj.Experience.ansExp!==0"class="col-6"><strong>Années de Pratique</strong></div>
+                        <div *ngIf="obj.Experience.ansExp!==0"class="col-6"><strong>{{obj.Experience.ansExp}}</strong></div>
+                    </div><hr>
+                </p-accordionTab>
+                <p-accordionTab header="Mes Références">
+                    <div class="row">
+                        <div *ngIf="obj.Refs.refs===''" class="col-6">Références</div>
+                        <div *ngIf="obj.Refs.refs!==''"class="col-6"><strong>Références</strong></div>
+                        <div *ngIf="obj.Refs.refs!==''"class="col-6"><strong>{{obj.Refs.refs}}</strong></div>
+                    </div><hr>
+                    <div class="row">
+                        <div *ngIf="obj.Refs.site===''" class="col-6">Site Web</div>
+                        <div *ngIf="obj.Refs.site!==''"class="col-6"><strong>Site Web</strong></div>
+                        <div *ngIf="obj.Refs.site!==''"class="col-6"><strong>{{obj.Refs.site}}</strong></div>
+                    </div><hr>
+                    <div class="row">
+                        <div *ngIf="obj.Refs.insta===''" class="col-6">Instagram</div>
+                        <div *ngIf="obj.Refs.insta!==''"class="col-6"><strong>Instagram</strong></div>
+                        <div *ngIf="obj.Refs.insta!==''"class="col-6"><strong>{{obj.Refs.insta}}</strong></div>
+                    </div><hr>
+                    <div class="row">
+                        <div *ngIf="obj.Refs.fb===''" class="col-6">Facebook</div>
+                        <div *ngIf="obj.Refs.fb!==''"class="col-6"><strong>Facebook</strong></div>
+                        <div *ngIf="obj.Refs.fb!==''"class="col-6"><strong>{{obj.Refs.fb}}</strong></div>
+                    </div><hr>
+                    <div class="row">
+                        <div *ngIf="obj.Refs.twit===''" class="col-6">Twitter</div>
+                        <div *ngIf="obj.Refs.twit!==''"class="col-6"><strong>Twitter</strong></div>
+                        <div *ngIf="obj.Refs.twit!==''"class="col-6"><strong>{{obj.Refs.twit}}</strong></div>
+                    </div><hr>
+                </p-accordionTab>
+                <p-accordionTab header="Diplôme(s) et Formation(s)">
+                    <div class="row">
+                        <div *ngIf="obj.Diplomes.diplome_formation===''"class="col-6">Diplômes et Formations</div>
+                        <div *ngIf="obj.Diplomes.diplome_formation!==''"class="col-6"><strong>Diplômes et Formations</strong></div>
+                        <div *ngIf="obj.Diplomes.diplome_formation!==''"class="col-6"><strong>{{obj.Diplomes.diplome_formation}}</strong></div>
+                    </div><hr>
+                </p-accordionTab>
+                <p-accordionTab header="Langue(s) parlée(s)">
+                    <div class="row">
+                        <div *ngIf="obj.Langues.fr!==true" class="col-6">Frensh</div>
+                        <div *ngIf="obj.Langues.fr===true"class="col-6"><strong>Frensh</strong></div>
+                        <div *ngIf="obj.Langues.fr===true"class="col-6"><strong>Yes</strong></div>
+                    </div><hr>
+                    <div class="row">
+                        <div *ngIf="obj.Langues.en!==true" class="col-6">English</div>
+                        <div *ngIf="obj.Langues.en===true"class="col-6"><strong>English</strong></div>
+                        <div *ngIf="obj.Langues.en===true"class="col-6"><strong>Yes</strong></div>
+                    </div><hr>
+                    <div class="row">
+                        <div *ngIf="obj.Langues.it!==true" class="col-6">Italian</div>
+                        <div *ngIf="obj.Langues.it===true"class="col-6"><strong>Italian</strong></div>
+                        <div *ngIf="obj.Langues.it===true"class="col-6"><strong>Yes</strong></div>
+                    </div><hr>
+                    <div class="row">
+                        <div *ngIf="obj.Langues.es!==true" class="col-6">Spanish</div>
+                        <div *ngIf="obj.Langues.es===true"class="col-6"><strong>Spanish</strong></div>
+                        <div *ngIf="obj.Langues.es===true"class="col-6"><strong>Yes</strong></div>
+                    </div><hr>
+                    <div class="row">
+                        <div *ngIf="obj.Langues.de!==true" class="col-6">German</div>
+                        <div *ngIf="obj.Langues.de===true"class="col-6"><strong>German</strong></div>
+                        <div *ngIf="obj.Langues.de===true"class="col-6"><strong>Yes</strong></div>
+                    </div><hr>
+                    <div class="row">
+                        <div *ngIf="obj.Langues.ndls!==true" class="col-6">Dutch</div>
+                        <div *ngIf="obj.Langues.ndls===true"class="col-6"><strong>Dutch</strong></div>
+                        <div *ngIf="obj.Langues.ndls===true"class="col-6"><strong>Yes</strong></div>
+                    </div><hr>
+                    <div class="row">
+                        <div *ngIf="obj.Langues.ru!==true" class="col-6">Russian</div>
+                        <div *ngIf="obj.Langues.ru===true"class="col-6"><strong>Russian</strong></div>
+                        <div *ngIf="obj.Langues.ru===true"class="col-6"><strong>Yes</strong></div>
+                    </div><hr>
+                    <div class="row">
+                        <div *ngIf="obj.Langues.ch!==true" class="col-6">Chinese</div>
+                        <div *ngIf="obj.Langues.ch===true"class="col-6"><strong>Chinese</strong></div>
+                        <div *ngIf="obj.Langues.ch===true"class="col-6"><strong>Yes</strong></div>
+                    </div><hr>
+                    <div class="row" *ngIf="obj.Langues.autre!==''">
+                        <div *ngIf="obj.Langues.autre===''" class="col-6">other</div>
+                        <div *ngIf="obj.Langues.autre!==''"class="col-6"><strong>other</strong></div>
+                        <div *ngIf="obj.Langues.autre!==''"class="col-6"><strong>{{obj.Langues.other}}</strong></div>
+                    </div><hr>
+                </p-accordionTab>
+                <div style="background-color: #595959;"><br></div>
+            </p-accordion>
+        </tbody>
+    </table>
+</div>

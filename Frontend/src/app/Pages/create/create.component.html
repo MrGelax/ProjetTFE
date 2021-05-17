@@ -1,0 +1,237 @@
+<div class="container-fluid">
+    <br>
+    <div class=" shadow mb-4">
+        <div class="card-header">
+            Create Page
+        </div>
+        <div class="card-body form">
+            <div *ngIf="curentLang==='FR'">
+                <form [formGroup]="FR" (ngSubmit)="onSubmit()">
+                    <div class="form-group form-row">
+                        <div class="col-md-3">
+                            <label for="protected">Is Protected</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="checkbox" id="protected" formControlName="protected"/>
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <div class="col-md-3">
+                            <label for="systemName">System Name</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" id="systemName" class="form-control" formControlName="systemName" />
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <div class="col-md-3">
+                            <label for="label">Label</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" id="label" class="form-control"formControlName="label"/>
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <label class="col-md-8">Nom Pays</label>
+                        <select class="custom-select form-control col-md-2">
+                            <option *ngFor="let lang of languages" (click)="currentLanng(lang)"[selected]="curentLang===lang">{{lang}}</option>    
+                        </select>
+                        <div class="dropdown" class="col-md-2">
+                            <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">Duplicated to
+                            <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                <div *ngFor="let lang of languages">
+                                    <li *ngIf="curentLang!==lang" (click)="duplicatoTo(lang)">{{lang}}</li>
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <div class="col-md-3">
+                            <label for="active">Is Active</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="checkbox" id="active" formControlName="active"/>
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <div class="col-md-3">
+                            <label for="title">Title</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" id="title" class="form-control" formControlName="title"/>
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <div class="col-md-3">
+                            <label>Main Content</label>
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <div class="col-md">
+                            <ckeditor formControlName="contentMain"></ckeditor>
+                        </div>
+                    </div>
+                    
+                <!-- Meta Informations -->
+                    <div class="row" >
+                        <p-accordion class="col-md-12">
+                            <p-accordionTab header="Meta Informations">
+                                <div id="metaInfosBlock" class=" card-body form">
+                                    <div class="form-group form-row">
+                                        <div class="col-md-3">
+                                            <label for="metaTitle">Title</label>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <input type="text" id="metaTitle" class="form-control"formControlName="metaTitle"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-row">
+                                        <div class="col-md-3"><label for="metaUrl">URL</label></div>
+                                        <div class="col-md-9">
+                                            <input type="text"class="form-control" id="metaUrl" formControlName="metaUrl"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-row">
+                                        <div class="col-md-3"><label for="metaDescription">Description</label></div>
+                                        <div class="col-md-9">
+                                            <input type="text"class="form-control"id="metaDescription" formControlName="metaDescription"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-row">
+                                        <div class="col-md-3">
+                                            <label for="metaContent">Additionnal Meta</label>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <textarea class="form-control" id="metaContent" rows="3" formControlName="metaContent"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </p-accordionTab>
+                        </p-accordion>
+                    </div>
+                    <br>
+                    <div class="form-group row float-right">
+                        <a class="btn btn-info" routerLink="../list"><i class="fas fa-arrow-left"></i> Back to List</a>
+                        <button class="btn btn-primary" style="margin-left: 3px" type="submit"><i class="far fa-save"></i> Save</button>
+                    </div>
+                    <br><br>
+                </form>
+                <p>{{FR.value|json}}</p>
+            </div>
+            <div *ngIf="curentLang==='EN'">
+                <form [formGroup]="EN" (ngSubmit)="onSubmit()">
+                    <div class="form-group form-row">
+                        <div class="col-md-3">
+                            <label>Is Protected</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="checkbox" formControlName="protected"/>
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <div class="col-md-3">
+                            <label>System Name</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" formControlName="systemName" />
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <div class="col-md-3">
+                            <label>Label</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control"formControlName="label"/>
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <label class="col-md-8">Nom Pays</label>
+                        <select class="custom-select form-control col-md-2">
+                            <option *ngFor="let lang of languages" (click)="currentLanng(lang)" [selected]="curentLang===lang">{{lang}}</option>    
+                        </select>
+                        <div class="dropdown">
+                            <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">Duplicated to
+                            <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                <div *ngFor="let lang of languages">
+                                    <li *ngIf="curentLang!==lang" (click)="duplicatoTo(lang)">{{lang}}</li>
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <div class="col-md-3">
+                            <label>Is Active</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="checkbox" formControlName="active"/>
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <div class="col-md-3">
+                            <label>Title</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text"class="form-control" formControlName="title"/>
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <div class="col-md-3">
+                            <label for="contentMain">Example textarea</label>
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <div class="col-md">
+                            <ckeditor formControlName="contentMain"></ckeditor>
+                        </div>
+                    </div>
+                <!-- Meta Informations -->
+                    <div class="row" >
+                        <p-accordion class="col-md-12">
+                            <p-accordionTab header="Meta Informations">
+                                <div id="metaInfosBlock" class=" card-body form">
+                                    <div class="form-group form-row">
+                                        <div class="col-md-3">
+                                            <label>Title</label>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <input type="text"class="form-control"formControlName="metaTitle"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-row">
+                                        <div class="col-md-3"><label>URL</label></div>
+                                        <div class="col-md-9">
+                                            <input type="text"class="form-control"formControlName="metaUrl"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-row">
+                                        <div class="col-md-3"><label>Description</label></div>
+                                        <div class="col-md-9">
+                                            <input type="text"class="form-control"formControlName="metaDescription"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-row">
+                                        <div class="col-md-3">
+                                            <label>Additionnal Meta</label>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <textarea class="form-control" rows="3" formControlName="metaContent"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </p-accordionTab>
+                        </p-accordion>
+                    </div>
+                    <br>
+                    <div class="form-group row float-right">
+                        <a class="btn btn-info" routerLink="../list"><i class="fas fa-arrow-left"></i> Back to List</a>
+                        <button class="btn btn-primary" style="margin-left: 3px" type="submit"><i class="far fa-save"></i> Save</button>
+                    </div>
+                    <br><br>
+                </form>
+                <p>{{EN.value|json}}</p>
+            </div>
+        </div>
+    </div>
+</div>

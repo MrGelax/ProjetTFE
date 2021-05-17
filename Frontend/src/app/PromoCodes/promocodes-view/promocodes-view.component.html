@@ -1,0 +1,70 @@
+<div class="container-fluid">
+  <br>
+  <div class=" shadow mb-4">
+      <div class="card-header">
+          View Promocode {{obj.ID}}
+      </div>
+      <div class="card-body">
+              <div class="form-group row">
+                  <div class="col-md-3">
+                      <label for="protected">Validité</label>
+                  </div>
+                  <div class="col-md-9">
+                      <div style="display: inline-block;">
+                        DU<br>
+                        <p>{{obj.Valid_from}}</p>
+                      </div>
+                      <div style="display: inline-block;margin-left: 10px;">
+                        AU <br>
+                        <p>{{obj.Valid_until}}</p>
+                      </div>
+                  </div>
+              </div><br>
+              <div class="form-group row">
+                  <div class="col-md-3">
+                      <label for="systemName">Nom interne</label>
+                  </div>
+                  <div class="col-md-9">
+                      <p>{{obj.Name}}</p>
+                  </div>
+              </div><br>
+              <div class="form-group row">
+                  <div class="col-md-3">
+                      <label for="systemName">Code</label>
+                  </div>
+                  <div class="col-md-9">
+                    <p>{{obj.Code}}</p>
+                  </div>
+              </div><br>
+              <div class="form-group row">
+                  <div class="col-md-3">
+                      <label for="systemName">Type</label>
+                  </div>
+                  <div class="col-md-9">
+                    <p>{{obj.Type.label}}</p>
+                  </div>
+              </div>
+              <div class="form-group row">
+                  <div class="col-md-3">
+                      <label for="systemName">Reuction</label>
+                  </div>
+                  <div class="col-md-9">
+                    <p>{{obj.Reduction}}</p>
+                  </div>
+              </div>
+              <div class="form-group row">
+                  <div class="col-md-3">
+                      <label for="systemName">Quantité max. (=durée max. pour abonnement)</label>
+                  </div>
+                  <div class="col-md-9">
+                    <p>{{obj.qtMax}}</p>
+                  </div>
+              </div>
+              <br>
+              <div class="form-group row float-right">
+                  <a class="btn btn-info" routerLink="/PromoCodes/list"><i class="fas fa-arrow-left"></i> Back to List</a>
+              </div>
+              <br><br>
+      </div>
+  </div>
+</div>
