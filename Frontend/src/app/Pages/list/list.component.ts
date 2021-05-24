@@ -26,6 +26,7 @@ export class ListComponent implements OnInit {
       this.listToDelete=[10,20,30,40];
       this.listToDelete.splice(0,this.listToDelete.length); //peut-être supprimer
     }, error => {
+      console.log(error);
     });
 
     // if(this.route.snapshot.params['id']){
@@ -42,6 +43,16 @@ export class ListComponent implements OnInit {
     console.log(this.listToDelete)
   }
   deletePage(){
-
+    for(let id of this.listToDelete){
+      this.pageService.deletePage(id).subscribe(result=>{
+        this.pageService.GetAllPages().subscribe(result=>{
+          this.rowData=result.pages;
+        },error => {
+          console.log(error);
+        });
+      },error => {
+        console.log(error);
+      });
+    }
   }
 }
