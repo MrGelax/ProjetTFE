@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CreateService } from 'src/app/services/Pages/create.service';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {BlockService} from "../../services/Blocks/block.service";
 import {Block} from "../block.model";
 import {BlockLocal} from "../blockLocal.modal";
@@ -21,16 +21,16 @@ export class BlockCreateComponent implements OnInit {
   block:Block=new  Block();
   blcLocal:BlockLocal=new BlockLocal();
   submited=false;
-  constructor(private createService:CreateService,private formBuilder:FormBuilder,public blockService:BlockService) { }
+  constructor(private route:Router,private createService:CreateService,private formBuilder:FormBuilder,public blockService:BlockService) { }
 
   ngOnInit(): void {
     this.languages=this.createService.languages;
     this.user=this.createService.Users[0];
     this.curentLang=this.user.Culture;
     this.FR=this.formBuilder.group({
-      systemName:['',Validators.required],
-      label:['',Validators.required],
-      contentMain:['',Validators.required]
+      systemName:['',Validators.required,Validators.maxLength(2)],
+      label:['',Validators.requiredTrue,Validators.maxLength(10)],
+      contentMain:['',Validators.requiredTrue]
     });
     this.EN=this.formBuilder.group({
       systemName:['',Validators.required],
@@ -81,6 +81,7 @@ export class BlockCreateComponent implements OnInit {
           console.log(error);
         }
     );
+    this.route.navigate(["/Blocks/list"]);
   }
   onSubmitBis(){
     this.blockService.CreateBlock(this.block).subscribe(result=>{

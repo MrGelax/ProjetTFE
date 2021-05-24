@@ -2,7 +2,7 @@
     <br>
     <div >
       <div class="">
-        <h1 style="display: inline-block;">Manage Page</h1><h6 style="display: inline-block;">{{obj.Title}}</h6>
+        <h1 style="display: inline-block;">Manage Page</h1><h6 style="display: inline-block;">{{obj.title}}</h6>
         <div class="form-group float-right"style="display: inline-block;">
           <a class="btn btn-info btn-icon-split" routerLink="/edit"style="margin-left: 3px;display: inline-block;">
               <span class="icon text-white-50">
@@ -10,13 +10,6 @@
               </span>
               <span class="text">Edit</span>
           </a>
-          <div class="dropdown" style="margin-left: 3px;display: inline-block;">
-            <button class="btn btn-warning dropdown-toggle" type="button" data-toggle="dropdown">View
-            <span class="caret"></span></button>
-            <ul class="dropdown-menu">
-              <li *ngFor="let v of views" (click)="click(v.url)">{{v.Culture}}</li>
-            </ul>
-          </div>
         </div>
       </div>
     </div>
@@ -24,33 +17,33 @@
             <table class="table table-borderless" style="background-color: white;color:black;">
                 <thead>
                     <tr>
-                        <th id="headTab"colspan="12">Details Page - {{obj.Title}}</th>
+                        <th id="headTab"colspan="12">Details Page - {{obj.title}}</th>
                     </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td class="col-md-3">Id</td>
-                    <td class="col-md-9">{{obj.ID}}</td>
+                    <td class="col-md-9">{{obj.id}}</td>
                   </tr>
                   <tr>
                     <td class="col-md-3">Is Prorected</td>
-                    <td class="col-md-9">{{obj.Is_Protected}}</td>
+                    <td class="col-md-9">{{obj.isProtected}}</td>
                   </tr>
                   <tr>
                     <td class="col-md-3">System Name</td>
-                    <td class="col-md-9">{{obj.System_Name}}</td>
+                    <td class="col-md-9">{{obj.systemName}}</td>
                   </tr>
                   <tr>
                     <td class="col-md-3">Label</td>
-                    <td class="col-md-9">{{obj.Label}}</td>
+                    <td class="col-md-9">{{obj.label}}</td>
                   </tr>
                   <tr>
                     <td class="col-md-3">Title</td>
-                    <td class="col-md-9">{{obj.Title}}</td>
+                    <td class="col-md-9">{{obj.title}}</td>
                   </tr>
                   <tr>
                     <td class="col-md-3">Main Content</td>
-                    <td class="col-md-9"><p>{{obj.Main_Content}}</p></td>
+                    <td class="col-md-9"><p>{{obj.mainContent}}</p></td>
                   </tr>
                 </tbody>
               </table>

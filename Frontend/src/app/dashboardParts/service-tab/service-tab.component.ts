@@ -50,7 +50,7 @@ export class ServiceTabComponent implements OnInit {
   }
   servicesValidation(){
     this.confirmationService.confirm({
-      message: 'Are you sure that you want to reject Customers?',
+      message: 'Êtes vous sûr de vouloir valider ce service?',
       accept: () => {
         if(this.actionList.length>=1){
           console.log(this.actionList);

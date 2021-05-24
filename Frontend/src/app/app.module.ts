@@ -26,6 +26,9 @@ import { ServiceTabComponent } from './dashboardParts/service-tab/service-tab.co
 import { CastingsService } from './services/Validations/castingList.service';
 import { CustomerListService } from './services/Customers/customerList.service';
 import { ValCustomerListService } from './services/Validations/customerList.service';
+import {CustomerService} from "./services/Customers/customer.service";
+import {EventService} from "./services/Event/event.service";
+import {PublicationService} from "./services/Publication/publication.service";
 
 import { CustomerBasicService} from './services/Customers/customerBasic.service';
 import { OdersService } from './services/Validations/ordersList.service';
@@ -108,6 +111,7 @@ import {DragDropModule} from 'primeng/dragdrop';
 import {CheckboxModule} from 'primeng/checkbox';
 import {InputTextModule} from 'primeng/inputtext';
 import {TieredMenuModule} from 'primeng/tieredmenu';
+
 
 export function kcFactory(kcSecurity:KeycloakSecurityService){
   return()=>kcSecurity.init();
@@ -258,12 +262,15 @@ const appRoutes:Routes=[
     reviewService,
     servicesService,
     CreateService,
+    CustomerService,
     ListService,
     ViewService,
     ConfirmationService,
     OrderListService,
     BlockService,
     PagesService,
+    EventService,
+    PublicationService,
     CustomerManageService,
     ProductsListService,
     HttpClientModule

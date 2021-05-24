@@ -51,6 +51,8 @@ export class CustomerCreateComponent implements OnInit {
     this.customerService.formData = {
       id: null,
       CountryId: null,
+      mainRole:null,
+      customerStatus:null,
       organizationId: null,
       email: '',
       firstName: '',

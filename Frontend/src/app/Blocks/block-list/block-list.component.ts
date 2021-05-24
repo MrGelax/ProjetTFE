@@ -20,8 +20,8 @@ export class BlockListComponent implements OnInit {
               public blockService:BlockService){ }
 
   ngOnInit(): void {
-    this.header=this.blockService.headers;
     this.blockService.GetAllBlocks().subscribe(result => {
+      this.header=this.blockService.headers;
       this.rowData = result.blocks;
       this.listToDelete=[10,20,30,40];
       this.listToDelete.splice(0,this.listToDelete.length);

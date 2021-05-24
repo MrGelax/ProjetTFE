@@ -53,8 +53,13 @@ namespace KastingKafeAPI
             app.UseHttpsRedirection();
 
             app.UseRouting();
-            
-            app.UseCors();
+
+            //app.UseCors();
+            //app.UseCors(MyAllowSpecificOrigins); Pour la production remettre cette ligne et retirer lignes 62 à 66
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
 
             //app.UseAuthentication();
 

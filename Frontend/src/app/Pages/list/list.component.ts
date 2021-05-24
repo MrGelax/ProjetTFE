@@ -19,8 +19,9 @@ export class ListComponent implements OnInit {
               public pageService:PagesService) { }
 
   ngOnInit(): void {
-    this.header=this.pageService.headers;
     this.pageService.GetAllPages().subscribe(result => {
+      this.header=this.pageService.headers;
+      console.log("Bonjour");
       this.rowData = result.pages;
       console.log("Nombre de page : "+result.totalCount);
       this.listToDelete=[10,20,30,40];
@@ -28,15 +29,7 @@ export class ListComponent implements OnInit {
     }, error => {
       console.log(error);
     });
-
-    // if(this.route.snapshot.params['id']){
-    //   let i:number=this.rowData.findIndex(e=> e.id===(+this.route.snapshot.params['id']));
-    //   if (i !== -1) {
-    //     this.rowData.splice(i,1);
-    //   }
-    // }
   }
-  
   addToList(item:any){
     console.log(item);
     this.listToDelete.push(+item);

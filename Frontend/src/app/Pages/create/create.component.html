@@ -33,9 +33,18 @@
                     </div>
                     <div class="form-group form-row">
                         <label class="col-md-8">Nom Pays</label>
-                        <select class="custom-select form-control col-md-2">
-                            <option *ngFor="let lang of languages" (click)="currentLanng(lang)"[selected]="curentLang===lang">{{lang}}</option>    
-                        </select>
+<!--                        <select class="custom-select form-control col-md-2">-->
+<!--                            <option *ngFor="let lang of languages" (click)="currentLang(lang)"[selected]="curentLang===lang">{{lang}}</option>-->
+<!--                        </select>-->
+                        <div class="dropdown" style="padding-right: 5px;">
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Block Language
+                                <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                <div *ngFor="let lang of languages">
+                                    <li *ngIf="curentLang!==lang" (click)="currentLang(lang)">{{lang}}</li>
+                                </div>
+                            </ul>
+                        </div>
                         <div class="dropdown" class="col-md-2">
                             <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">Duplicated to
                             <span class="caret"></span></button>
@@ -147,9 +156,18 @@
                     </div>
                     <div class="form-group form-row">
                         <label class="col-md-8">Nom Pays</label>
-                        <select class="custom-select form-control col-md-2">
-                            <option *ngFor="let lang of languages" (click)="currentLanng(lang)" [selected]="curentLang===lang">{{lang}}</option>    
-                        </select>
+<!--                        <select class="custom-select form-control col-md-2">-->
+<!--                            <option *ngFor="let lang of languages" (click)="currentLanng(lang)" [selected]="curentLang===lang">{{lang}}</option>    -->
+<!--                        </select>-->
+                        <div class="dropdown" style="padding-right: 5px;">
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Block Language
+                                <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                <div *ngFor="let lang of languages">
+                                    <li *ngIf="curentLang!==lang" (click)="currentLang(lang)">{{lang}}</li>
+                                </div>
+                            </ul>
+                        </div>
                         <div class="dropdown">
                             <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">Duplicated to
                             <span class="caret"></span></button>

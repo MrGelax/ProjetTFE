@@ -51,7 +51,7 @@ export class OrdersTabComponent implements OnInit {
   }
   ordersListValidation(){
     this.confirmationService.confirm({
-      message: 'Êtes-vous sûr de vouloirs valider cette commande?',
+      message: 'Êtes-vous sûr de vouloir valider cette commande?',
       accept: () => {
         if(this.actionList.length>=1){
           console.log(this.actionList);

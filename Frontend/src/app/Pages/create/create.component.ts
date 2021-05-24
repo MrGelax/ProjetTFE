@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import{NgForm, FormControl, FormBuilder, FormGroup, Validators}from '@angular/forms';
 import { CreateService } from '../../services/Pages/create.service';
+import {Block} from "../../Blocks/block.model";
+import {BlockLocal} from "../../Blocks/blockLocal.modal";
+import {BlockService} from "../../services/Blocks/block.service";
+import {Router} from "@angular/router";
+import {PagesService} from "../../services/Pages/pages.service";
+import {PageLocal} from "../pageLocal.model";
+import {Page} from "../page.model";
   
 
 @Component({
@@ -15,8 +22,12 @@ export class CreateComponent implements OnInit {
   curentLang:string;
   FR:FormGroup;
   EN:FormGroup;
-  submited=false;
-  constructor(private createService:CreateService,private formBuilder:FormBuilder) { }
+
+  page:Page=new  Page();
+  pl:PageLocal=new PageLocal();
+
+  constructor(private route:Router,private createService:CreateService,
+              private formBuilder:FormBuilder,public pageService:PagesService) { }
 
   ngOnInit(): void {
     this.languages=this.createService.languages;
@@ -26,9 +37,9 @@ export class CreateComponent implements OnInit {
       protected:[false,Validators.requiredTrue],
       systemName:['',Validators.required],
       label:['',Validators.required],
-      active:[false,Validators.requiredTrue],
       title:['',Validators.required],
       contentMain:['',Validators.required],
+      active:[false,Validators.requiredTrue],
       metaTitle:[],
       metaUrl:[],
       metaDescription:[],
@@ -47,7 +58,7 @@ export class CreateComponent implements OnInit {
       metaContent:[]
     });
   }
-  currentLanng(lang:any){
+  currentLang(lang:any){
     this.curentLang=lang;
   }
   duplicatoTo(lang:any){
@@ -60,7 +71,52 @@ export class CreateComponent implements OnInit {
     this.curentLang=lang;
   }
   onSubmit(){
-    console.log('Données du formulaire',this.FR.value);
-    console.log('Données du formulaire',this.EN.value);
+    this.page.systemName=this.FR.value.systemName;
+    this.page.label=this.FR.value.label;
+    this.page.mainContent=this.FR.value.contentMain;
+    this.page.isProtected=this.FR.value.isProtected;
+    this.page.title=this.FR.value.title;
+    this.page.pageTitle=this.FR.value.metaTitle;
+    this.page.pageURL=this.FR.value.metaUrl;
+    this.page.pageDescription=this.FR.value.metaDescription;
+    this.page.pageAdditionalMeta=this.FR.value.metaContent;
+
+    this.pageService.CreatePage(this.page).subscribe(result=>{
+      this.page=result;
+      this.pl.pageId=result.id;
+      this.pl.mainContent=this.FR.value.contentMain;
+      this.pl.languageCode="fr";
+      this.pl.isActive=this.FR.value.isActive;
+      this.pl.pageURL=this.FR.value.metaUrl;
+      this.pl.pageTitle=this.FR.value.title;
+      this.pl.pageDescription=this.FR.value.metaDescription;
+      this.pl.pageAdditionalMeta=this.FR.value.metaContent;
+      this.pl.pageOGTitle=this.FR.value.metaTitle;
+      this.pageService.CreatePageLocal(this.pl).subscribe(resFR=>{
+        console.log("Ajout pageLocal en Français");
+        console.log(resFR);
+      },e => {
+        console.log(e);
+      });
+      this.pl.pageId=result.id;
+      this.pl.mainContent=this.EN.value.contentMain;
+      this.pl.languageCode="en";
+      this.pl.isActive=this.EN.value.isActive;
+      this.pl.pageURL=this.EN.value.metaUrl;
+      this.pl.pageTitle=this.EN.value.title;
+      this.pl.pageDescription=this.EN.value.metaDescription;
+      this.pl.pageAdditionalMeta=this.EN.value.metaContent;
+      this.pl.pageOGTitle=this.EN.value.metaTitle;
+          this.pageService.CreatePageLocal(this.pl).subscribe(resEN=>{
+            console.log("Ajout pageLocal en Anglais");
+            console.log(resEN);
+          },e => {
+            console.log(e);
+          });
+        },error => {
+          console.log(error);
+        }
+    );
+    this.route.navigate(["/Pages/list"]);
   }
 }

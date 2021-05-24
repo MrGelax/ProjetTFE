@@ -57,11 +57,10 @@ id: number;
 
     // Rating: number;
 
-    // MainRole: CustomerRole;
+     mainRole: CustomerRole;
 
     // CustomerSubscription: CustomerSubscription;
-
-    // CustomerStatus: number;
+    customerStatus: number;
 
     organizationId: number;
 
@@ -83,7 +82,7 @@ id: number;
 export class CustomerRole {
     Id: number;
 
-    SystemName: string;
+    systemName: string;
 
     CanBeChild: boolean;
 

@@ -8,31 +8,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace KastingKafeAPI.Controllers
-{
+namespace KastingKafeAPI.Controllers{
 
     [ApiController]
     [Route("api/[controller]")]
-    public sealed class BlockLocalController : ControllerBase
-    {
+    public sealed class BlockLocalController : ControllerBase{
         private readonly IConfiguration configuration;
 
-
-        public BlockLocalController(IConfiguration configuration)
-        {
+        public BlockLocalController(IConfiguration configuration){
             this.configuration = configuration;
-
         }
 
         //GET:    api/BlockLocal
         [HttpGet]
-        public async Task<ActionResult> Get()//Fonctionne
-        {
+        public async Task<ActionResult> Get(){
             await using var db = new BlockLocalDBContext(configuration);
-
             var blocks = await db.BlockLocal
                 .ToListAsync();
-
             return Ok(blocks);
         }
         ////GET:    api/BlockLocal
@@ -57,8 +49,7 @@ namespace KastingKafeAPI.Controllers
          * 
          */
         [HttpGet("Block/{blockId}")]
-        public async Task<ActionResult> GetByBlockId(int blockId)
-        {
+        public async Task<ActionResult> GetByBlockId(int blockId){
             await using var db = new BlockLocalDBContext(configuration);
             //var blocks = db.BlockLocal.FromSqlRaw("SELECT * FROM BlockLocal b WHERE b.BlockId={0}", blockId).ToListAsync();
             var blocks = db.BlockLocal.Where(b => b.BlockId == blockId).ToListAsync();
@@ -66,15 +57,12 @@ namespace KastingKafeAPI.Controllers
             return Ok(blocks.Result);
         }
 
-        public List<BlockLocal> GetBlockLocals(int blockid)
-        {
+        public List<BlockLocal> GetBlockLocals(int blockid) {
             var db = new BlockLocalDBContext(configuration);
             List<BlockLocal> res = new List<BlockLocal>();
             var blcs = db.BlockLocal.ToList();
-            foreach (var blockLocal in blcs)
-            {
-                if (blockLocal.BlockId == blockid)
-                {
+            foreach (var blockLocal in blcs){
+                if (blockLocal.BlockId == blockid) {
                     res.Add(blockLocal);
                     Console.WriteLine("Je suis dans la liste local et je suis dans le local " + blockLocal.LanguageCode);
                 }
@@ -84,15 +72,11 @@ namespace KastingKafeAPI.Controllers
 
         //GET:    api/BlockLocal/id
         [HttpGet("{id}")]//Fonctionne
-        public async Task<ActionResult> GetById(int id)
-        {
+        public async Task<ActionResult> GetById(int id){
             await using var db = new BlockLocalDBContext(configuration);
             var blocks = await db.BlockLocal.FindAsync(id);
-
             if (blocks == null)
-            {
                 return NotFound();
-            }
 
             return Ok(blocks);
 
@@ -100,14 +84,11 @@ namespace KastingKafeAPI.Controllers
 
         //DELETE:    api/BlockLocal/id
         [HttpDelete("{id}")]//Fonctionne
-        public async Task<ActionResult<BlockLocal>> Delete(int id)
-        {
+        public async Task<ActionResult<BlockLocal>> Delete(int id){
             await using var db = new BlockLocalDBContext(configuration);
             var blocks = await db.BlockLocal.FindAsync(id);
             if (blocks == null)
-            {
                 return NotFound();
-            }
 
             db.BlockLocal.Remove(blocks);
             await db.SaveChangesAsync();
@@ -117,25 +98,19 @@ namespace KastingKafeAPI.Controllers
 
         //POST:    api/BlockLocal
         [HttpPost] //fonctionne
-        public async Task<ActionResult> Create([FromBody]BlockLocal blocks)
-        {
+        public async Task<ActionResult> Create([FromBody]BlockLocal blocks){
             var now = DateTime.Now;
-            if (!ModelState.IsValid)
-            {
+            if (!ModelState.IsValid){
                 return BadRequest(ModelState);
             }
 
             await using var db = new BlockLocalDBContext(configuration);
 
-
             blocks.CreatedDateTime = now;
             blocks.LastModifiedDateTime = blocks.LastModifiedDateTime ?? now;
 
-
             db.BlockLocal.Add(blocks);
-
             await db.SaveChangesAsync();
-
 
             return CreatedAtAction("GetById", new { id = blocks.Id }, blocks);
         }
@@ -177,12 +152,9 @@ namespace KastingKafeAPI.Controllers
             return Ok(blocks);
         }
 
-        private bool BlockExists(int id)
-        {
+        private bool BlockExists(int id) {
             using var db = new BlockLocalDBContext(configuration);
             return db.BlockLocal.Any(x => x.Id == id);
         }
-
-
     }
 }

@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {PagesModel} from "../../Pages/pages.model";
 import {Page} from "../../Pages/page.model";
 import {PageLocal} from "../../Pages/pageLocal.model";
+import {Block} from "../../Blocks/block.model";
 
 @Injectable()
 export class PagesService {
@@ -14,15 +15,20 @@ export class PagesService {
 
 
     GetAllPages(): Observable<PagesModel>{
-        return this.http.get<PagesModel>(this.rootURL+'/Pages');
+        console.log("Page List");
+        return this.http.get<PagesModel>(this.rootURL+'/Page');
     }
     CreatePage(p:Page){
-        return this.http.post<Page>(this.rootURL+'/Pages',p);
+        return this.http.post<Page>(this.rootURL+'/Page',p);
     }
     CreatePageLocal(p:PageLocal){
-        return this.http.post<PageLocal>(this.rootURL+'/PagesLocal',p);
+        return this.http.post<PageLocal>(this.rootURL+'/PageLocal',p);
     }
     GetById(id:number){
-        return this.http.get<Page>(this.rootURL+'/Pages/'+id);
+        return this.http.get<Page>(this.rootURL+'/Page/'+id);
     }
+    deletePage(id:number){
+        return this.http.delete<Page>(this.rootURL+'/Page/'+id);
+    }
+
 }

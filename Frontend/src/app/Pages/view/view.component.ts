@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ListService } from '../../services/list.service';
 import { ViewService } from '../../services/view.service';
+import {PagesService} from "../../services/Pages/pages.service";
+import {Page} from "../page.model";
 
 @Component({
   selector: 'app-view',
@@ -10,23 +12,24 @@ import { ViewService } from '../../services/view.service';
 })
 export class ViewComponent implements OnInit {
 
-  obj:any;
-  views:any[];
+  obj:Page;
   constructor(private viewtService:ViewService,
-    private route:ActivatedRoute,private router:Router) { }
+    private route:ActivatedRoute,private router:Router,public pagesService:PagesService) { }
 
   ngOnInit(): void {
     const id=this.route.snapshot.params['id'];
     if(this.viewtService.getPageByID(+id)===undefined) {
       this.router.navigate(['/not-found']);  
+    }else{
+      this.pagesService.GetById(id).subscribe(result=>{
+        this.obj=result;
+      });
+      //this.obj=this.viewtService.getBlockByID(+id);
+      //console.log(this.obj.Title);
     }
-    this.obj=this.viewtService.getPageByID(+id);
-    this.views=this.viewtService.views;
-    console.log(this.obj.Title);
-    console.log(id);
   }
   backtoList(){
-    this.router.navigate(['/list/'+this.obj.ID]);
+    this.router.navigate(['/list/'+this.obj.id]);
   }
   click(url:string){
     window.location.href=url;

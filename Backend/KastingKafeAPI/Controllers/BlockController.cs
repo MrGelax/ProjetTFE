@@ -13,59 +13,41 @@ namespace KastingKafeAPI.Controllers
     [Route("api/[controller]")]
     public class BlockController : BaseBlockController //ControllerBase 
     {
-
         private readonly IConfiguration configuration;
         public BlockController(IConfiguration configuration) :
             base(configuration)
         {
             this.configuration = configuration;
-
         }
 
         //GET:    api/Block
         [HttpGet]
-        public async Task<ActionResult> Get(int? page, int? pageSize)//Fonctionne
-        {
+        public async Task<ActionResult> Get(int? page, int? pageSize){
             if (page == null && pageSize == null)
-            {
                 return Ok(new { TotalCount = Database.Block.Count(), Blocks = Database.Block.ToList() });
-            }
-
             var blocks = Database.Block.Skip(((page - 1) * pageSize).Value).Take(pageSize.Value).ToList();
-
             return Ok(new { TotalCount = Database.Block.Count(), Blocks = blocks });
         }
 
-
         //GET:    api/Block/id
         [HttpGet("{id}")]//Fonctionne
-        public async Task<ActionResult> GetById(int id)
-        {
+        public async Task<ActionResult> GetById(int id) {
             var blocks = await Database.Block.FindAsync(id);
-
             if (blocks == null)
-            {
                 return NotFound();
-            }
-
             return Ok(blocks);
-
         }
 
         //DELETE:    api/Block/id
         [HttpDelete("{id}")] //Fonctionne
-        public async Task<ActionResult<Block>> Delete(int id)
-        {
+        public async Task<ActionResult<Block>> Delete(int id){
             var blocks = await Database.Block.FindAsync(id);
             var bLC = new BlockLocalController(configuration);
 
             List<BlockLocal> blockLocals = bLC.GetBlockLocals(blocks.Id);
             if (blocks == null)
-            {
                 return NotFound();
-            }
-            foreach (var blockLocal in blockLocals)
-            {
+            foreach (var blockLocal in blockLocals){
                 await bLC.Delete(blockLocal.Id);
             }
             Database.Block.Remove(blocks);
@@ -75,8 +57,7 @@ namespace KastingKafeAPI.Controllers
 
         //POST:    api/Block
         [HttpPost]//Fonctionne
-        public async Task<ActionResult> Create([FromBody]Block blocks)
-        {
+        public async Task<ActionResult> Create([FromBody]Block blocks){
             var now = DateTime.Now;
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -137,8 +118,7 @@ namespace KastingKafeAPI.Controllers
             }
             return Ok(blocks);
         }
-        private bool BlockExists(int id)
-        {
+        private bool BlockExists(int id){
             using var db = new BlockDbContext(configuration);
             return db.Block.Any(x => x.Id == id);
         }

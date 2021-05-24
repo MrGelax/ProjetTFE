@@ -2,16 +2,16 @@
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary col-md-9" style="display: inline;">Castings List</h6>
         <div class="float-right">
-            <button class="btn btn-success" style="color: white;" (click)="castingListValidation()">
+            <button class="btn btn-success" style="color: white;" (click)="listValidation()">
                 <i class="far fa-save" style="color: white;"></i> Validate
             </button>
-            <button class="btn" style="margin-left:3px;background-color:#cc0000;color: white;"(click)="castingListRejected()">
+            <button class="btn" style="margin-left:3px;background-color:#cc0000;color: white;"data-toggle="modal" data-target="#exampleModal">
                 <i class="fas fa-trash" style="color: white;"></i> Reject
             </button>
         </div>
     </div>
     <div class="card-body">
-        <p-table [columns]="header" [value]="castings">
+        <p-table [columns]="header" [value]="rowData">
             <ng-template pTemplate="header" let-columns>
                 <tr>
                     <th *ngFor="let col of columns" [pSortableColumn]="col">
@@ -22,16 +22,49 @@
             </ng-template>
             <ng-template pTemplate="body" let-rowData let-columns="columns">
                 <tr [pSelectableRow]="rowData" [pEditableRow]="rowData">
-                    <td>{{rowData.ID}}</td>
-                    <td><a [routerLink]="['/Customer/view/982']">{{rowData.Name}}</a></td>
-                    <td>{{rowData.System_Name}}</td>
-                    <td>{{rowData.Title}}</td>
-                    <td>{{rowData.Description}}</td>
-                    <td>{{rowData.Start_Date}}</td>
-                    <td>{{rowData.End_Date}}</td>
-                    <td><input type="checkbox" id="{{rowData.ID}}" (click)="addToCastingList(rowData.ID)"></td>
+                    <td>{{rowData.id}}</td>
+                    <td>{{rowData.systemName}}</td>
+                    <td>{{rowData.customer.firstName+" "+rowData.customer.lastName}}</td>
+                    <td><input type="checkbox" id="{{rowData.ID}}" (click)="addToList(rowData.id)"></td>
                 </tr>
             </ng-template>
         </p-table>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="this.actionList.length>=1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Reject Customer </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <!--              <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="close()">-->
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="rejectForm">
+                    <div class="form-group form-row">
+                        <label for="label">Please enter why you want to reject the customer</label>
+                        <ckeditor formControlName="content"></ckeditor>
+                    </div>
+                    <br>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div class="float-right">
+                    <button class="btn btn-primary" style="margin-left: 3px" data-dismiss="modal" aria-label="Close" (click)="close()">
+                        <!--                    <button class="btn btn-primary" style="margin-left: 3px" data-dismiss="modal" aria-label="Close"(click)="close()">-->
+                        <i class="fas fa-times"></i> Close
+                    </button>
+                    <button class="btn btn-info" style="margin-left: 3px" data-dismiss="modal" (click)="onSubmit()">
+                        <!--                    <button class="btn btn-info" style="margin-left: 3px" (click)="onSubmit()" data-dismiss="modal">-->
+                        <i class="far fa-save"></i> Save
+                    </button>
+                </div>
+                <br><br>
+            </div>
+        </div>
     </div>
 </div>
