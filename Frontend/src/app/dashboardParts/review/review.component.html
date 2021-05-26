@@ -2,7 +2,7 @@
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary col-md-9" style="display: inline;">Review List</h6>
         <div class="float-right">
-            <button class="btn btn-success" style="color: white;" (click)="reviewListValidation()">
+            <button class="btn btn-success" style="color: white;" (click)="listValidation()">
                 <i class="far fa-save" style="color: white;"></i> Validate
             </button>
             <button class="btn" style="margin-left:3px;background-color:#cc0000;color: white;"data-toggle="modal" data-target="#exampleModal">
@@ -11,7 +11,7 @@
         </div>
     </div>
     <div class="card-body">
-        <p-table [columns]="header" [value]="reviewList">
+        <p-table [columns]="header" [value]="rowData">
             <ng-template pTemplate="header" let-columns>
                 <tr>
                     <th *ngFor="let col of columns" [pSortableColumn]="col">
@@ -22,12 +22,13 @@
             </ng-template>
             <ng-template pTemplate="body" let-rowData let-columns="columns">
                 <tr [pSelectableRow]="rowData" [pEditableRow]="rowData">
-                    <td>{{rowData.ID}}</td>
-                    <td>{{rowData.Sender_s_Name}}</td>
-                    <td>{{rowData.Recipent_s_Name}}</td>
-                    <td>{{rowData.Rating}}</td>
-                    <td>{{rowData.Message}}</td>
-                    <td><input type="checkbox" id="{{rowData.ID}}" (click)="addToReviewList(rowData.ID)"></td>
+                    <td>{{rowData.id}}</td>
+                    <td>{{rowData.title}}</td>
+                    <td>{{rowData.senderCustomer.firstName+" "+rowData.senderCustomer.lastName}}</td>
+                    <td>{{rowData.recipientCustomer.firstName+" "+rowData.recipientCustomer.lastName}}</td>
+                    <td>{{rowData.rating}}</td>
+                    <td>{{rowData.comment}}</td>
+                    <td><input type="checkbox" id="{{rowData.id}}" (click)="addToList(rowData.id)"></td>
                 </tr>
             </ng-template>
         </p-table>

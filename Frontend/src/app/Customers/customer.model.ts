@@ -124,18 +124,44 @@ export class Organization
         LastModifiedDateTime: Date; */
     }
 
-    export class Country
-    {
-        
-        Id: number;
-
-        //public string SystemName { get; set; }
-
-        Code: string;
-
-        //public int CurrencyId { get; set; }//FK
-
-        CreatedDateTime: Date;
-
-        LastModifiedDateTime: Date;
+    export class Country {
+        id: number;
+        name:string;
+        code: string;
+        createdDateTime:Date;
+        lastModifiedDateTime:Date;
+        currencyId:number;
+        label:string;
+        currency:Currency;
     }
+export class Currency {
+    id: number;
+    systemName:string;
+    code: string;
+    symbole:string;
+    codeSIPS:number
+    createdDateTime:Date;
+    lastModifiedDateTime:Date;
+}
+export class State {
+    id: number;
+    label:string;
+    title: string;
+    countryId:number
+    createdDateTime:Date;
+    lastModifiedDateTime:Date;
+    country:Country;
+}
+export class City {
+    id:number;
+    label:string;
+    title:string;
+    zip:string;
+    geography:string;
+    createdDateTime:Date;
+    lastModifiedDateTime:Date;
+    geoPostCodeId:number;
+    countryId:number;
+    state:State;
+    country:Country;
+}

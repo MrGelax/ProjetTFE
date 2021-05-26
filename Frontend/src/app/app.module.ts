@@ -29,6 +29,9 @@ import { ValCustomerListService } from './services/Validations/customerList.serv
 import {CustomerService} from "./services/Customers/customer.service";
 import {EventService} from "./services/Event/event.service";
 import {PublicationService} from "./services/Publication/publication.service";
+import {ReviewService} from "./services/Review/review.service";
+import {CustomerServicesService} from "./services/CustomerServices/customerServices.service";
+import {PortfoliosService} from "./services/Portfolios/portfolios.service";
 
 import { CustomerBasicService} from './services/Customers/customerBasic.service';
 import { OdersService } from './services/Validations/ordersList.service';
@@ -271,6 +274,9 @@ const appRoutes:Routes=[
     PagesService,
     EventService,
     PublicationService,
+    CustomerServicesService,
+    PortfoliosService,
+    ReviewService,
     CustomerManageService,
     ProductsListService,
     HttpClientModule

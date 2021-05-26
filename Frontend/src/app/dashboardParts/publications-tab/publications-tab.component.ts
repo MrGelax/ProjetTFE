@@ -89,7 +89,6 @@ export class PublicationsTabComponent implements OnInit {
     });
   }
 
-
   onSubmit(){
     console.log(this.rejectForm.get('content').value);
     this.rejectForm.reset();

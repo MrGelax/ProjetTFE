@@ -20,5 +20,6 @@ namespace KastingKafeAPI.Entities{
 
         public Customer customer { get; set; }
         public MediaType mediatype { get; set; }
+        //public PublicationStatus PublicationStatus { get; set; }
     }
 }
