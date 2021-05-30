@@ -4,6 +4,7 @@ import {HttpClient} from "@angular/common/http";
 import {BlocksModel} from "../../Blocks/blocks.model";
 import {Observable} from "rxjs";
 import {BlockLocal} from "../../Blocks/blockLocal.modal";
+import {Customer} from "../../Customers/customer.model";
 
 @Injectable()
 export class BlockService {
@@ -25,8 +26,17 @@ export class BlockService {
   CreateBlockLocal(b:BlockLocal){
     return this.http.post<BlockLocal>(this.rootURL+'/BlockLocal',b);
   }
-  GetById(id:number){
+  GetById(id:number): Observable<Block>{
     return this.http.get<Block>(this.rootURL+'/Block/'+id);
+  }
+  GetByBlockId(id:number){
+    return this.http.get<BlockLocal[]>(this.rootURL+'/BlockLocal/Block/'+id);
+  }
+  UpdateBlock(block:Block,id:number): Observable<Block>{
+    return this.http.put<Block>(this.rootURL+'/Blocks/'+id,block);
+  }
+  UpdateBlockLocal(blc:BlockLocal,id:number): Observable<BlockLocal>{
+    return this.http.put<BlockLocal>(this.rootURL+'/Blocks/'+id,blc);
   }
   deleteBlock(id:number){
     return this.http.delete<Block>(this.rootURL+'/Block/'+id);

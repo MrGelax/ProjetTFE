@@ -53,7 +53,6 @@ namespace KastingKafeAPI.Controllers{
             await using var db = new BlockLocalDBContext(configuration);
             //var blocks = db.BlockLocal.FromSqlRaw("SELECT * FROM BlockLocal b WHERE b.BlockId={0}", blockId).ToListAsync();
             var blocks = db.BlockLocal.Where(b => b.BlockId == blockId).ToListAsync();
-            Console.WriteLine(blocks.ToString());
             return Ok(blocks.Result);
         }
 
@@ -117,37 +116,24 @@ namespace KastingKafeAPI.Controllers{
 
         //PUT:    api/BlockLocal
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, BlockLocal blocks)//Fonctionne
-        {
-
+        public async Task<IActionResult> Update(int id, BlockLocal blocks){
             var now = DateTime.Now;
 
             if (id != blocks.Id)
-            {
                 return BadRequest();
-            }
 
             await using var db = new BlockLocalDBContext(configuration);
-
-
             blocks.LastModifiedDateTime = blocks.LastModifiedDateTime ?? now;
 
             db.Entry(blocks).State = EntityState.Modified;
 
-            try
-            {
+            try{
                 await db.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
+            }catch (DbUpdateConcurrencyException){
                 if (!BlockExists(id))
-                {
                     return NotFound();
-                }
                 else
-                {
                     throw;
-                }
             }
             return Ok(blocks);
         }

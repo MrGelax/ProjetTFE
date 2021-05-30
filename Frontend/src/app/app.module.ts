@@ -128,7 +128,7 @@ const appRoutes:Routes=[
   {path:'Pages/edit',component:EditComponent}, 
   
   {path:'Blocks/create',component:BlockCreateComponent},
-  {path:'Blocks/edit',component:BlockEditComponent},
+  {path:'Blocks/edit/:id',component:BlockEditComponent},
   {path:'Blocks/view/:id',component:BlockViewComponent},
   {path:'Blocks/list',component:BlockListComponent},
   {path:'Blocks/list/:id',component:BlockListComponent},

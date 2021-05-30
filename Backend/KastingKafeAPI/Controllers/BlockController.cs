@@ -77,44 +77,28 @@ namespace KastingKafeAPI.Controllers
 
         //PUT:    api/Block
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, Block blocks)//Fonctionne
-        {
-
+        public async Task<IActionResult> Update(int id, Block blocks){
             var now = DateTime.Now;
 
             if (id != blocks.Id)
-            {
                 return BadRequest();
-            }
 
-            var bLc = new BlockLocalController(configuration);
-            List<BlockLocal> blockLocals = bLc.GetBlockLocals(blocks.Id);
-            Console.WriteLine("Liste des blockLocals ok ");
-
-            foreach (var blockLocal in blockLocals)
-            {
-                blockLocal.Body = blocks.Body;
-
-                await bLc.Update(blockLocal.Id, blockLocal);
-            }
-
+            //var bLc = new BlockLocalController(configuration);
+            //List<BlockLocal> blockLocals = bLc.GetBlockLocals(blocks.Id);
+            //Console.WriteLine("Liste des blockLocals ok ");
+            //foreach (var blockLocal in blockLocals){
+            //    blockLocal.Body = blocks.Body;
+            //    await bLc.Update(blockLocal.Id, blockLocal);
+            //}
             blocks.LastModifiedDateTime = blocks.LastModifiedDateTime ?? now;
             Database.Entry(blocks).State = EntityState.Modified;
-
-            try
-            {
+            try{
                 await Database.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
+            }catch (DbUpdateConcurrencyException){
                 if (!BlockExists(id))
-                {
                     return NotFound();
-                }
                 else
-                {
                     throw;
-                }
             }
             return Ok(blocks);
         }

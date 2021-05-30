@@ -12,7 +12,8 @@
         </div>
     </div>
     <div class="card-body">
-        <p-table [columns]="header" [value]="rowData">
+        <p *ngIf="rowData===undefined">Aucun service en attente de validation</p>
+        <p-table [columns]="header" [value]="rowData" *ngIf="rowData!==undefined">
             <ng-template pTemplate="header" let-columns>
                 <tr>
                     <th *ngFor="let col of columns" [pSortableColumn]="col">

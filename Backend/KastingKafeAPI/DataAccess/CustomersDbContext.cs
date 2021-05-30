@@ -8,6 +8,7 @@ namespace KastingKafeAPI.DataAccess{
         public DbSet<Organization> Organization { get; set; }
         public DbSet<AspNetUsers> AspNetUsers { get; set; }
         public DbSet<CustomerEventSetup> CustomerEventSetup { get; set; }
+        public DbSet<CustomerRole> CustomerRole { get; set; }
         public DbSet<CustomerSubscription> CustomerSubscription { get; set; }
         private readonly IConfiguration configuration;
 

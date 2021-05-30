@@ -1,1 +1,131 @@
 <p>block-edit works!</p>
+<div class="container-fluid">
+    <br>
+    <div class=" shadow mb-4">
+        <div class="card-header">
+            Create Blocks
+        </div>
+        <div class="card-body form">
+            <div *ngIf="curentLang==='FR'">
+                <form [formGroup]="FR" (ngSubmit)="onSubmit()">
+                    <div class="form-group form-row">
+                        <div class="col-md-3">
+                            <label>System Name</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" formControlName="systemName" />
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <div class="col-md-3">
+                            <label>Label</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control"formControlName="label"/>
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <label class="col-md-8">Nom Pays</label>
+                        <!--                        <select class="custom-select form-control col-md-2">-->
+                        <!--                            <option *ngFor="let lang of languages" [selected]="curentLang===lang" (click)="currentLang(lang)">{{lang}}</option>-->
+                        <!--                        </select>-->
+                        <div class="dropdown" style="padding-right: 5px;">
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Block Language
+                                <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                <div *ngFor="let lang of languages">
+                                    <li *ngIf="curentLang!==lang" (click)="currentLang(lang)">{{lang}}</li>
+                                </div>
+                            </ul>
+                        </div>
+                        <div class="dropdown">
+                            <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">Duplicated to
+                                <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                <div *ngFor="let lang of languages">
+                                    <li *ngIf="curentLang!==lang" (click)="duplicatoTo(lang)">{{lang}}</li>
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <div class="col-md-3">
+                            <label>Main Content</label>
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <div class="col-md">
+                            <ckeditor formControlName="contentMain"></ckeditor>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group row float-right">
+                        <a class="btn btn-info" routerLink="../list"><i class="fas fa-arrow-left"></i> Back to List</a>
+                        <button class="btn btn-primary" style="margin-left: 3px" type="submit"><i class="far fa-save"></i> Save</button>
+                    </div>
+                    <br><br>
+                </form>
+            </div>
+            <div *ngIf="curentLang==='EN'">
+                <form [formGroup]="EN" (ngSubmit)="onSubmit()">
+                    <div class="form-group form-row">
+                        <div class="col-md-3">
+                            <label>System Name</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" formControlName="systemName" />
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <div class="col-md-3">
+                            <label>Label</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control"formControlName="label"/>
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <label class="col-md-8">Nom Pays</label>
+                        <!--                        <select class="custom-select form-control col-md-2">-->
+                        <!--                            <option *ngFor="let lang of languages" [selected]="curentLang===lang" (click)="currentLang(lang)">{{lang}}</option>-->
+                        <!--                        </select>-->
+                        <div class="dropdown" style="padding-right: 5px;">
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Block Language
+                                <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                <div *ngFor="let lang of languages">
+                                    <li *ngIf="curentLang!==lang" (click)="currentLang(lang)">{{lang}}</li>
+                                </div>
+                            </ul>
+                        </div>
+                        <div class="dropdown">
+                            <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">Duplicated to
+                                <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                <div *ngFor="let lang of languages">
+                                    <li *ngIf="curentLang!==lang" (click)="duplicatoTo(lang)" >{{lang}}</li>
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <div class="col-md-3">
+                            <label>Main Cotent</label>
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <div class="col-md">
+                            <ckeditor formControlName="contentMain"></ckeditor>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group row float-right">
+                        <a class="btn btn-info" routerLink="../list"><i class="fas fa-arrow-left"></i> Back to List</a>
+                        <button class="btn btn-primary" style="margin-left: 3px" type="submit"><i class="far fa-save"></i> Save</button>
+                    </div>
+                    <br><br>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

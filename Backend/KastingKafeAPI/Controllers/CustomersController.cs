@@ -37,12 +37,19 @@ namespace KastingKafeAPI.Controllers{
         [HttpGet("{id}")]
         public async Task<ActionResult> GetById(int id){
             await using var db = new CustomersDbContext(configuration);
-            var customers = await db.Customer.FindAsync(id);
+            var customers = await db.Customer
+                .Include(x => x.Organization)
+                .Include(x => x.User)
+                .Include(x => x.CustomerEventSetup)
+                .Include(x => x.MainRole)
+                .Include(x => x.CustomerSubscription)
+                .ToListAsync();
+            //var customers = await db.Customer.FindAsync(id);
 
             if (customers == null)
                 return NotFound();
 
-            return Ok(customers);
+            return Ok(customers.First());
         }
 
         [HttpGet("Validation")]
@@ -58,7 +65,6 @@ namespace KastingKafeAPI.Controllers{
                 .ToListAsync();
             //var customers = await db.Customer.Where(c => c.CustomerStatus == 3).ToListAsync();
 
-            Console.WriteLine(customers.ToString());
             return Ok(customers);
         }
 

@@ -11,7 +11,6 @@ export class KeycloakSecurityService {
   
   constructor() { }
   async init(){
-    console.log("Security Initialisation...");
     this.kc=new Keycloak({
       url:'http://localhost:8080/auth',
       realm:'kastingKafeProject',
@@ -20,7 +19,7 @@ export class KeycloakSecurityService {
     await this.kc.init({
       onLoad:'login-required'
     });
-    console.log(this.kc.tokenParsed['name']);
+    //console.log(this.kc.tokenParsed['name']);
   }
   //constructor() { }
   //init(){
