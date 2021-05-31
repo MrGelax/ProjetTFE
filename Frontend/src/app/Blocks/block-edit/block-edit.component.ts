@@ -40,12 +40,12 @@ export class BlockEditComponent implements OnInit {
           this.FR.setValue({
               systemName:this.block.systemName,
               label:this.block.label,
-              contentMain:this.blcFR.body+' Français'
+              contentMain:this.blcFR.body
           });
           this.EN.setValue({
               systemName:this.block.systemName,
               label:this.block.label,
-              contentMain:this.blcEn.body+' Anglais'
+              contentMain:this.blcEn.body
           });
       }, error => {
         console.log(error);
@@ -101,9 +101,7 @@ export class BlockEditComponent implements OnInit {
     this.block.body=this.FR.value.contentMain;
     this.blockService.UpdateBlock(this.block,this.block.id).subscribe(result=>{
           this.block=result;
-          this.blcFR.blockId=result.id;
           this.blcFR.body=this.FR.value.contentMain;
-          this.blcFR.languageCode="fr";
           this.blockService.UpdateBlockLocal(this.blcFR,this.blcFR.id).subscribe(resFR=>{
             console.log("Ajout blockLocal en Français");
             console.log(resFR);
@@ -111,7 +109,6 @@ export class BlockEditComponent implements OnInit {
             console.log(e);
           });
           this.blcEn.body=this.EN.value.contentMain;
-          this.blcEn.languageCode="en";
           this.blockService.UpdateBlockLocal(this.blcEn,this.blcEn.id).subscribe(resEN=>{
             console.log("Ajout blockLocal en Englais");
             console.log(resEN);

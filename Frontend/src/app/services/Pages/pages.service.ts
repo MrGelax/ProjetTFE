@@ -5,6 +5,7 @@ import {PagesModel} from "../../Pages/pages.model";
 import {Page} from "../../Pages/page.model";
 import {PageLocal} from "../../Pages/pageLocal.model";
 import {Block} from "../../Blocks/block.model";
+import {BlockLocal} from "../../Blocks/blockLocal.modal";
 
 @Injectable()
 export class PagesService {
@@ -26,6 +27,15 @@ export class PagesService {
     }
     GetById(id:number){
         return this.http.get<Page>(this.rootURL+'/Page/'+id);
+    }
+    GetByPageId(id:number){
+        return this.http.get<PageLocal[]>(this.rootURL+'/PageLocal/Page/'+id);
+    }
+    UpdatePage(p:Page,id:number): Observable<Page>{
+        return this.http.put<Page>(this.rootURL+'/Page/'+id,p);
+    }
+    UpdatePageLocal(plc:PageLocal,id:number): Observable<PageLocal>{
+        return this.http.put<PageLocal>(this.rootURL+'/PageLocal/'+id,plc);
     }
     deletePage(id:number){
         return this.http.delete<Page>(this.rootURL+'/Page/'+id);

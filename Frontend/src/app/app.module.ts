@@ -125,7 +125,7 @@ const appRoutes:Routes=[
   {path:'Pages/view/:id',component:ViewComponent},
   {path:'Pages/list',component:ListComponent},
   {path:'Pages/list/:id',component:ListComponent},
-  {path:'Pages/edit',component:EditComponent}, 
+  {path:'Pages/edit/:id',component:EditComponent},
   
   {path:'Blocks/create',component:BlockCreateComponent},
   {path:'Blocks/edit/:id',component:BlockEditComponent},

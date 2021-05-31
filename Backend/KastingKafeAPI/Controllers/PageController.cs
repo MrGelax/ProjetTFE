@@ -79,55 +79,44 @@ namespace KastingKafeAPI.Controllers{
 
         //PUT:    api/Block
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, Pages page)//Fonctionne
-        {
+        public async Task<IActionResult> Update(int id, Pages page){
             var now = DateTime.Now;
             if (id != page.Id)
-            {
                 return BadRequest();
-            }
 
-            var bLc = new PageLocalController(configuration);
-            List<PagesLocal> pageLocals = bLc.GetPageLocals(page.Id);
-            Console.WriteLine("Liste des blockLocals ok ");
+            //var bLc = new PageLocalController(configuration);
+            //List<PagesLocal> pageLocals = bLc.GetPageLocals(page.Id);
+            //Console.WriteLine("Liste des blockLocals ok ");
 
-            foreach (var pageLocal in pageLocals)
-            {
-                pageLocal.PageId = page.Id;
-                pageLocal.IsActive = page.IsProtected;
-                pageLocal.MainContent = page.MainContent;
-                pageLocal.Title = page.Title;
-                pageLocal.PageAdditionalMeta = page.PageAdditionalMeta;
-                pageLocal.PageDescription = page.PageDescription;
-                pageLocal.PageOGDescription = page.PageOGDescription;
-                pageLocal.PageOGTitle = page.PageOGTitle;
-                pageLocal.PageTitle = page.PageTitle;
-                pageLocal.PageURL = page.PageURL;
-                pageLocal.LastModifiedDateTime = now;
-                await bLc.Update(pageLocal.Id, pageLocal);
-            }
+            //foreach (var pageLocal in pageLocals)
+            //{
+            //    pageLocal.PageId = page.Id;
+            //    pageLocal.IsActive = page.IsProtected;
+            //    pageLocal.MainContent = page.MainContent;
+            //    pageLocal.Title = page.Title;
+            //    pageLocal.PageAdditionalMeta = page.PageAdditionalMeta;
+            //    pageLocal.PageDescription = page.PageDescription;
+            //    pageLocal.PageOGDescription = page.PageOGDescription;
+            //    pageLocal.PageOGTitle = page.PageOGTitle;
+            //    pageLocal.PageTitle = page.PageTitle;
+            //    pageLocal.PageURL = page.PageURL;
+            //    pageLocal.LastModifiedDateTime = now;
+            //    await bLc.Update(pageLocal.Id, pageLocal);
+            //}
             page.LastModifiedDateTime = page.LastModifiedDateTime ?? now;
             Database.Entry(page).State = EntityState.Modified;
-            try
-            {
+            try{
                 await Database.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
+            }catch (DbUpdateConcurrencyException) {
                 if (!PageExists(id))
-                {
                     return NotFound();
-                }
                 else
-                {
                     throw;
-                }
             }
             return Ok(page);
         }
 
-        private bool PageExists(int id)
-        {
+        private bool PageExists(int id){
             return Database.Page.Any(x => x.Id == id);
         }
     }

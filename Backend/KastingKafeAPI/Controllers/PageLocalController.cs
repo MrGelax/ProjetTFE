@@ -30,6 +30,12 @@ namespace KastingKafeAPI.Controllers
                 .ToListAsync();
             return Ok(pageLocals);
         }
+        [HttpGet("Page/{pageId}")]
+        public async Task<ActionResult> GetByPageId(int pageId){
+            await using var db = new PagesLocalDbContext(configuration);
+            var pages = db.PageLocal.Where(b => b.PageId == pageId).ToListAsync();
+            return Ok(pages.Result);
+        }
         public List<PagesLocal> GetPageLocals(int pageid)
         {
             var db = new PagesLocalDbContext(configuration);

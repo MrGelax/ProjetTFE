@@ -33,10 +33,10 @@ export class BlockService {
     return this.http.get<BlockLocal[]>(this.rootURL+'/BlockLocal/Block/'+id);
   }
   UpdateBlock(block:Block,id:number): Observable<Block>{
-    return this.http.put<Block>(this.rootURL+'/Blocks/'+id,block);
+    return this.http.put<Block>(this.rootURL+'/Block/'+id,block);
   }
   UpdateBlockLocal(blc:BlockLocal,id:number): Observable<BlockLocal>{
-    return this.http.put<BlockLocal>(this.rootURL+'/Blocks/'+id,blc);
+    return this.http.put<BlockLocal>(this.rootURL+'/BlockLocal/'+id,blc);
   }
   deleteBlock(id:number){
     return this.http.delete<Block>(this.rootURL+'/Block/'+id);

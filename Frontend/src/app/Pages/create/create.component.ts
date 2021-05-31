@@ -98,6 +98,7 @@ export class CreateComponent implements OnInit {
       },e => {
         console.log(e);
       });
+
       this.pl.pageId=result.id;
       this.pl.mainContent=this.EN.value.contentMain;
       this.pl.languageCode="en";
