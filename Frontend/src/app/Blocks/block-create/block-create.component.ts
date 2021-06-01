@@ -28,9 +28,9 @@ export class BlockCreateComponent implements OnInit {
     this.user=this.createService.Users[0];
     this.curentLang=this.user.Culture;
     this.FR=this.formBuilder.group({
-      systemName:['',Validators.required,Validators.maxLength(2)],
-      label:['',Validators.requiredTrue,Validators.maxLength(10)],
-      contentMain:['',Validators.requiredTrue]
+      systemName:['',Validators.required],
+      label:['',Validators.required],
+      contentMain:['',Validators.required]
     });
     this.EN=this.formBuilder.group({
       systemName:['',Validators.required],
@@ -52,13 +52,17 @@ export class BlockCreateComponent implements OnInit {
     this.curentLang=lang;
     console.log(this.curentLang)
   }
-
-
+    get fr() { return this.FR.controls; }
+    get en() { return this.EN.controls; }
   onSubmit(){
-    this.block.systemName=this.FR.value.systemName;
-    this.block.label=this.FR.value.label;
-    this.block.body=this.FR.value.contentMain;
-    this.blockService.CreateBlock(this.block).subscribe(result=>{
+      this.submited=true;
+      if(this.FR.invalid && this.EN.invalid){
+          return;
+      }
+      this.block.systemName=this.FR.value.systemName;
+      this.block.label=this.FR.value.label;
+      this.block.body=this.FR.value.contentMain;
+      this.blockService.CreateBlock(this.block).subscribe(result=>{
           this.block=result;
           this.blcLocal.blockId=result.id;
           this.blcLocal.body=this.FR.value.contentMain;
@@ -72,24 +76,21 @@ export class BlockCreateComponent implements OnInit {
           this.blcLocal.body=this.EN.value.contentMain;
           this.blcLocal.languageCode="en";
           this.blockService.CreateBlockLocal(this.blcLocal).subscribe(resEN=>{
-            console.log("Ajout blockLocal en Englais");
+              console.log("Ajout blockLocal en Englais");
               console.log(resEN);
           },e => {
               console.log(e);
           });
-        },error => {
+      },error => {
           console.log(error);
-        }
-    );
+      });
     this.route.navigate(["/Blocks/list"]);
   }
-  onSubmitBis(){
-    this.blockService.CreateBlock(this.block).subscribe(result=>{
-          console.log(result);
-        },error => {
-          console.log(error);
-        }
-    );
+  onReset() {
+      this.submited = false;
+      this.FR.reset();
+      this.EN.reset();
+      this.route.navigate(["/Blocks/list"]);
   }
 }
 

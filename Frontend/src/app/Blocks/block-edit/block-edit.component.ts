@@ -21,6 +21,7 @@ export class BlockEditComponent implements OnInit {
   block:Block=new Block();
   blcFR:BlockLocal=new BlockLocal();
   blcEn:BlockLocal=new BlockLocal();
+  submited=false;
   constructor(private router:Router,private route:ActivatedRoute,
               private createService:CreateService,private formBuilder:FormBuilder,
               public blockService:BlockService) { }
@@ -76,9 +77,9 @@ export class BlockEditComponent implements OnInit {
 
   initialiserFormulaire(formu:FormGroup,blc:BlockLocal):FormGroup{
     formu=this.formBuilder.group({
-      systemName:['',[Validators.required,Validators.maxLength(2)]],
-      label:['',[Validators.requiredTrue,Validators.maxLength(10)]],
-      contentMain:['',Validators.requiredTrue]
+      systemName:['',[Validators.required]],
+      label:['',[Validators.required]],
+      contentMain:['',Validators.required]
     });
     return formu;
   }
@@ -95,7 +96,13 @@ export class BlockEditComponent implements OnInit {
     }
     this.curentLang=lang;
   }
+    get fr() { return this.FR.controls; }
+    get en() { return this.EN.controls; }
   onSubmit(){
+    this.submited=true;
+    if(this.FR.invalid && this.EN.invalid){
+        return;
+    }
     this.block.systemName=this.FR.value.systemName;
     this.block.label=this.FR.value.label;
     this.block.body=this.FR.value.contentMain;
@@ -121,4 +128,10 @@ export class BlockEditComponent implements OnInit {
     );
     this.router.navigate(["/Blocks/list"]);
   }
+    onReset() {
+        this.submited = false;
+        this.FR.reset();
+        this.EN.reset();
+        this.router.navigate(["/Blocks/list"]);
+    }
 }

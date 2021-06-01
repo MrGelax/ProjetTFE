@@ -12,7 +12,7 @@
                             <label for="protected">Is Protected</label>
                         </div>
                         <div class="col-md-9">
-                            <input type="checkbox" id="protected" formControlName="protected"/>
+                            <input type="checkbox" id="protected" formControlName="protected" [ngClass]="{'is-invalid':submited && fr.protected.errors}"/>
                         </div>
                     </div>
                     <div class="form-group form-row">
@@ -20,7 +20,7 @@
                             <label for="systemName">System Name</label>
                         </div>
                         <div class="col-md-9">
-                            <input type="text" id="systemName" class="form-control" formControlName="systemName" />
+                            <input type="text" id="systemName" class="form-control" formControlName="systemName" [ngClass]="{'is-invalid':submited && fr.systemName.errors}"/>
                         </div>
                     </div>
                     <div class="form-group form-row">
@@ -28,7 +28,7 @@
                             <label for="label">Label</label>
                         </div>
                         <div class="col-md-9">
-                            <input type="text" id="label" class="form-control"formControlName="label"/>
+                            <input type="text" id="label" class="form-control"formControlName="label"[ngClass]="{'is-invalid':submited && fr.label.errors}"/>
                         </div>
                     </div>
                     <div class="form-group form-row">
@@ -60,7 +60,7 @@
                             <label for="active">Is Active</label>
                         </div>
                         <div class="col-md-9">
-                            <input type="checkbox" id="active" formControlName="active"/>
+                            <input type="checkbox" id="active" formControlName="active" [ngClass]="{'is-invalid':submited && fr.active.errors}"/>
                         </div>
                     </div>
                     <div class="form-group form-row">
@@ -68,7 +68,7 @@
                             <label for="title">Title</label>
                         </div>
                         <div class="col-md-9">
-                            <input type="text" id="title" class="form-control" formControlName="title"/>
+                            <input type="text" id="title" class="form-control" formControlName="title"[ngClass]="{'is-invalid':submited && fr.title.errors}"/>
                         </div>
                     </div>
                     <div class="form-group form-row">
@@ -78,7 +78,7 @@
                     </div>
                     <div class="form-group form-row">
                         <div class="col-md">
-                            <ckeditor formControlName="contentMain"></ckeditor>
+                            <ckeditor formControlName="contentMain"[ngClass]="{'is-invalid':submited && fr.contentMain.errors}"></ckeditor>
                         </div>
                     </div>
 
@@ -92,19 +92,19 @@
                                             <label for="metaTitle">Title</label>
                                         </div>
                                         <div class="col-md-9">
-                                            <input type="text" id="metaTitle" class="form-control"formControlName="metaTitle"/>
+                                            <input type="text" id="metaTitle" class="form-control"formControlName="metaTitle"[ngClass]="{'is-invalid':submited && fr.metaTitle.errors}"/>
                                         </div>
                                     </div>
                                     <div class="form-group form-row">
                                         <div class="col-md-3"><label for="metaUrl">URL</label></div>
                                         <div class="col-md-9">
-                                            <input type="text"class="form-control" id="metaUrl" formControlName="metaUrl"/>
+                                            <input type="text"class="form-control" id="metaUrl" formControlName="metaUrl"[ngClass]="{'is-invalid':submited && fr.metaUrl.errors}"/>
                                         </div>
                                     </div>
                                     <div class="form-group form-row">
                                         <div class="col-md-3"><label for="metaDescription">Description</label></div>
                                         <div class="col-md-9">
-                                            <input type="text"class="form-control"id="metaDescription" formControlName="metaDescription"/>
+                                            <input type="text"class="form-control"id="metaDescription" formControlName="metaDescription"[ngClass]="{'is-invalid':submited && fr.metaDescription.errors}"/>
                                         </div>
                                     </div>
                                     <div class="form-group form-row">
@@ -112,7 +112,7 @@
                                             <label for="metaContent">Additionnal Meta</label>
                                         </div>
                                         <div class="col-md-9">
-                                            <textarea class="form-control" id="metaContent" rows="3" formControlName="metaContent"></textarea>
+                                            <textarea class="form-control" id="metaContent" rows="3" formControlName="metaContent"[ngClass]="{'is-invalid':submited && fr.metaContent.errors}"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -121,7 +121,8 @@
                     </div>
                     <br>
                     <div class="form-group row float-right">
-                        <a class="btn btn-info" routerLink="../list"><i class="fas fa-arrow-left"></i> Back to List</a>
+                        <button class="btn btn-info" type="reset" (click)="onReset()">Back to List</button>
+<!--                        <a class="btn btn-info" routerLink="../list"><i class="fas fa-arrow-left"></i> Back to List</a>-->
                         <button class="btn btn-primary" style="margin-left: 3px" type="submit"><i class="far fa-save"></i> Save</button>
                     </div>
                     <br><br>
@@ -135,7 +136,7 @@
                             <label>Is Protected</label>
                         </div>
                         <div class="col-md-9">
-                            <input type="checkbox" formControlName="protected"/>
+                            <input type="checkbox" formControlName="protected" [ngClass]="{'is-invalid':submited && en.protected.errors}"/>
                         </div>
                     </div>
                     <div class="form-group form-row">
@@ -143,7 +144,7 @@
                             <label>System Name</label>
                         </div>
                         <div class="col-md-9">
-                            <input type="text" class="form-control" formControlName="systemName" />
+                            <input type="text" class="form-control" formControlName="systemName" [ngClass]="{'is-invalid':submited && en.systemName.errors}"/>
                         </div>
                     </div>
                     <div class="form-group form-row">
@@ -151,7 +152,7 @@
                             <label>Label</label>
                         </div>
                         <div class="col-md-9">
-                            <input type="text" class="form-control"formControlName="label"/>
+                            <input type="text" class="form-control"formControlName="label" [ngClass]="{'is-invalid':submited && en.label.errors}"/>
                         </div>
                     </div>
                     <div class="form-group form-row">
@@ -183,7 +184,7 @@
                             <label>Is Active</label>
                         </div>
                         <div class="col-md-9">
-                            <input type="checkbox" formControlName="active"/>
+                            <input type="checkbox" formControlName="active" [ngClass]="{'is-invalid':submited && en.active.errors}"/>
                         </div>
                     </div>
                     <div class="form-group form-row">
@@ -191,7 +192,7 @@
                             <label>Title</label>
                         </div>
                         <div class="col-md-9">
-                            <input type="text"class="form-control" formControlName="title"/>
+                            <input type="text"class="form-control" formControlName="title" [ngClass]="{'is-invalid':submited && en.title.errors}"/>
                         </div>
                     </div>
                     <div class="form-group form-row">
@@ -201,7 +202,7 @@
                     </div>
                     <div class="form-group form-row">
                         <div class="col-md">
-                            <ckeditor formControlName="contentMain"></ckeditor>
+                            <ckeditor formControlName="contentMain" [ngClass]="{'is-invalid':submited && en.contentMain.errors}"></ckeditor>
                         </div>
                     </div>
                     <!-- Meta Informations -->
@@ -214,19 +215,19 @@
                                             <label>Title</label>
                                         </div>
                                         <div class="col-md-9">
-                                            <input type="text"class="form-control"formControlName="metaTitle"/>
+                                            <input type="text"class="form-control"formControlName="metaTitle" [ngClass]="{'is-invalid':submited && en.metaTitle.errors}"/>
                                         </div>
                                     </div>
                                     <div class="form-group form-row">
                                         <div class="col-md-3"><label>URL</label></div>
                                         <div class="col-md-9">
-                                            <input type="text"class="form-control"formControlName="metaUrl"/>
+                                            <input type="text"class="form-control"formControlName="metaUrl" [ngClass]="{'is-invalid':submited && en.metaUrl.errors}"/>
                                         </div>
                                     </div>
                                     <div class="form-group form-row">
                                         <div class="col-md-3"><label>Description</label></div>
                                         <div class="col-md-9">
-                                            <input type="text"class="form-control"formControlName="metaDescription"/>
+                                            <input type="text"class="form-control"formControlName="metaDescription" [ngClass]="{'is-invalid':submited && en.metaDescription.errors}"/>
                                         </div>
                                     </div>
                                     <div class="form-group form-row">
@@ -234,7 +235,7 @@
                                             <label>Additionnal Meta</label>
                                         </div>
                                         <div class="col-md-9">
-                                            <textarea class="form-control" rows="3" formControlName="metaContent"></textarea>
+                                            <textarea class="form-control" rows="3" formControlName="metaContent" [ngClass]="{'is-invalid':submited && en.metaContent.errors}"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -243,7 +244,8 @@
                     </div>
                     <br>
                     <div class="form-group row float-right">
-                        <a class="btn btn-info" routerLink="../list"><i class="fas fa-arrow-left"></i> Back to List</a>
+                        <button class="btn btn-info" type="reset" (click)="onReset()">Back to List</button>
+<!--                        <a class="btn btn-info" routerLink="../list"><i class="fas fa-arrow-left"></i> Back to List</a>-->
                         <button class="btn btn-primary" style="margin-left: 3px" type="submit"><i class="far fa-save"></i> Save</button>
                     </div>
                     <br><br>

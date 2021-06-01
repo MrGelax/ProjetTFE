@@ -31,7 +31,6 @@ export class PublicationsTabComponent implements OnInit {
     this.publicationService.GetAllPublicationsValidation().subscribe(result => {
       this.header=this.publicationService.headers;
       this.rowData = result;
-      console.log(this.rowData);
     }, error => {
       console.log(error);
     });

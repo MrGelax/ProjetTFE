@@ -28,7 +28,6 @@ export class ServiceTabComponent implements OnInit {
     this.customerService.GetAllCustomerServicesValidation().subscribe(result => {
       this.header=this.customerService.headers;
       this.rowData = result;
-      console.log(this.rowData);
     }, error => {
       console.log(error);
     });

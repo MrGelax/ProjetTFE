@@ -24,6 +24,7 @@ export class EditComponent implements OnInit {
   page:Page=new Page();
   plcFR:PageLocal=new PageLocal();
   plcEn:PageLocal=new PageLocal();
+  submited=false;
   constructor(private router:Router,private route:ActivatedRoute,
               private createService:CreateService,private formBuilder:FormBuilder,
               public pageService:PagesService) { }
@@ -144,8 +145,14 @@ export class EditComponent implements OnInit {
     }
     this.curentLang=lang;
   }
+  get fr() { return this.FR.controls; }
+  get en() { return this.EN.controls; }
 
   onSubmit(){
+    this.submited=true;
+    if(this.FR.invalid && this.EN.invalid){
+      return;
+    }
     //modification de l'objet page
     this.page.systemName=this.FR.value.systemName;
     this.page.label=this.FR.value.label;
@@ -189,6 +196,12 @@ export class EditComponent implements OnInit {
         console.log(error);
       }
     );
+    this.router.navigate(["/Pages/list"]);
+  }
+  onReset() {
+    this.submited = false;
+    this.FR.reset();
+    this.EN.reset();
     this.router.navigate(["/Pages/list"]);
   }
 }

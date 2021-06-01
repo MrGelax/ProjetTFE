@@ -32,7 +32,6 @@ export class ReviewComponent implements OnInit {
     this.reviewService.GetAllReviewsValidation().subscribe(result => {
       this.header=this.reviewService.headers;
       this.rowData = result;
-      console.log(this.rowData);
     }, error => {
       console.log(error);
     });

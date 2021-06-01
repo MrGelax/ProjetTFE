@@ -46,7 +46,6 @@ export class CustomerTabComponent implements OnInit {
     this.customerService.GetAllCustomersValidation().subscribe(result => {
       this.header=this.customerService.headers;
       this.rowData = result;
-      console.log(this.rowData);
     }, error => {
       console.log(error);
     });

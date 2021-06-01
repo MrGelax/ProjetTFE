@@ -12,7 +12,7 @@
                             <label>System Name</label>
                         </div>
                         <div class="col-md-9">
-                            <input type="text" class="form-control" formControlName="systemName" />
+                            <input type="text" class="form-control" formControlName="systemName" [ngClass]="{'is-invalid':submited && fr.systemName.errors}"/>
                         </div>
                     </div>
                     <div class="form-group form-row">
@@ -20,7 +20,7 @@
                             <label>Label</label>
                         </div>
                         <div class="col-md-9">
-                            <input type="text" class="form-control"formControlName="label"/>
+                            <input type="text" class="form-control"formControlName="label" [ngClass]="{'is-invalid':submited && fr.label.errors}" />
                         </div>
                     </div>
                     <div class="form-group form-row">
@@ -54,16 +54,18 @@
                     </div>
                     <div class="form-group form-row">
                         <div class="col-md">
-                            <ckeditor formControlName="contentMain"></ckeditor>
+                            <ckeditor formControlName="contentMain" [ngClass]="{'is-invalid':submited && fr.contentMain.errors}"></ckeditor>
                         </div>
                     </div>
                     <br>
                     <div class="form-group row float-right">
-                        <a class="btn btn-info" routerLink="../list"><i class="fas fa-arrow-left"></i> Back to List</a>
+                        <button class="btn btn-info" type="reset" (click)="onReset()">Back to List</button>
+<!--                        <a class="btn btn-info" routerLink="../list"><i class="fas fa-arrow-left"></i> Back to List</a>-->
                         <button class="btn btn-primary" style="margin-left: 3px" type="submit"><i class="far fa-save"></i> Save</button>
                     </div>
                     <br><br>
                 </form>
+                <p>{{FR.valid}}</p>
             </div>
             <div *ngIf="curentLang==='EN'">
                 <form [formGroup]="EN" (ngSubmit)="onSubmit()">
@@ -72,7 +74,7 @@
                             <label>System Name</label>
                         </div>
                         <div class="col-md-9">
-                            <input type="text" class="form-control" formControlName="systemName" />
+                            <input type="text" class="form-control" formControlName="systemName"  [ngClass]= "{'is-invalid':submited && en.systemName.errors}"/>
                         </div>
                     </div>
                     <div class="form-group form-row">
@@ -80,7 +82,7 @@
                             <label>Label</label>
                         </div>
                         <div class="col-md-9">
-                            <input type="text" class="form-control"formControlName="label"/>
+                            <input type="text" class="form-control"formControlName="label" [ngClass]= "{'is-invalid':submited && en.label.errors}"/>
                         </div>
                     </div>
                     <div class="form-group form-row">
@@ -114,16 +116,19 @@
                     </div>
                     <div class="form-group form-row">
                         <div class="col-md">
-                            <ckeditor formControlName="contentMain"></ckeditor>
+                            <ckeditor formControlName="contentMain" [ngClass]="{'is-invalid':submited && en.contentMain.errors}"></ckeditor>
                         </div>
                     </div>
                     <br>
                     <div class="form-group row float-right">
-                        <a class="btn btn-info" routerLink="../list"><i class="fas fa-arrow-left"></i> Back to List</a>
+                        <button class="btn btn-info" type="reset" (click)="onReset()">Back to List</button>
+<!--                        <a class="btn btn-info" routerLink="../list"><i class="fas fa-arrow-left"></i> Back to List</a>-->
                         <button class="btn btn-primary" style="margin-left: 3px" type="submit"><i class="far fa-save"></i> Save</button>
                     </div>
                     <br><br>
                 </form>
+
+                <p>{{EN.valid}}</p>
             </div>
         </div>
     </div>

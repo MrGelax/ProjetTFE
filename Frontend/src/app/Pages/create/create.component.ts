@@ -25,7 +25,7 @@ export class CreateComponent implements OnInit {
 
   page:Page=new  Page();
   pl:PageLocal=new PageLocal();
-
+  submited=false;
   constructor(private route:Router,private createService:CreateService,
               private formBuilder:FormBuilder,public pageService:PagesService) { }
 
@@ -34,22 +34,22 @@ export class CreateComponent implements OnInit {
     this.user=this.createService.Users[0];
     this.curentLang=this.user.Culture;
     this.FR=this.formBuilder.group({
-      protected:[false,Validators.requiredTrue],
+      protected:[false],
       systemName:['',Validators.required],
       label:['',Validators.required],
       title:['',Validators.required],
       contentMain:['',Validators.required],
-      active:[false,Validators.requiredTrue],
+      active:[false],
       metaTitle:[],
       metaUrl:[],
       metaDescription:[],
       metaContent:[]
     });
     this.EN=this.formBuilder.group({
-      protected:[false,Validators.requiredTrue],
+      protected:[false],
       systemName:['',Validators.required],
       label:['',Validators.required],
-      active:[false,Validators.requiredTrue],
+      active:[false],
       title:['',Validators.required],
       contentMain:['',Validators.required],
       metaTitle:[],
@@ -70,7 +70,14 @@ export class CreateComponent implements OnInit {
     }
     this.curentLang=lang;
   }
+  get fr() { return this.FR.controls; }
+  get en() { return this.EN.controls; }
+
   onSubmit(){
+    this.submited=true;
+    if(this.FR.invalid && this.EN.invalid){
+      return;
+    }
     this.page.systemName=this.FR.value.systemName;
     this.page.label=this.FR.value.label;
     this.page.mainContent=this.FR.value.contentMain;
@@ -118,6 +125,12 @@ export class CreateComponent implements OnInit {
           console.log(error);
         }
     );
+    this.route.navigate(["/Pages/list"]);
+  }
+  onReset() {
+    this.submited = false;
+    this.FR.reset();
+    this.EN.reset();
     this.route.navigate(["/Pages/list"]);
   }
 }

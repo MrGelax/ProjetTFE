@@ -27,7 +27,6 @@ export class CastingTabComponent implements OnInit {
     this.eventService.GetAllCastingsValidation().subscribe(result => {
       this.header=this.eventService.headers;
       this.rowData = result;
-      console.log(this.rowData);
     }, error => {
       console.log(error);
     });
