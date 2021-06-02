@@ -33,6 +33,7 @@ export class CustomerTabComponent implements OnInit {
   actionList:any[];
   rejectForm:FormGroup;
   customer:Customer=new Customer();
+  listlenght:number=0;
 
   constructor(private customerService:CustomerService,private confirmationService:ConfirmationService,
               private formBuilder:FormBuilder) { }
@@ -46,6 +47,7 @@ export class CustomerTabComponent implements OnInit {
     this.customerService.GetAllCustomersValidation().subscribe(result => {
       this.header=this.customerService.headers;
       this.rowData = result;
+      this.listlenght=this.rowData.length;
     }, error => {
       console.log(error);
     });

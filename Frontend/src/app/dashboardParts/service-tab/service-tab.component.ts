@@ -15,6 +15,7 @@ export class ServiceTabComponent implements OnInit {
   actionList:any[];
   customerServ:CustomerService=new CustomerService();
   rejectForm:FormGroup;
+  listLenght:number=0;
 
   constructor(private customerService:CustomerServicesService,private confirmationService:ConfirmationService
       ,private formBuilder:FormBuilder) { }
@@ -28,6 +29,7 @@ export class ServiceTabComponent implements OnInit {
     this.customerService.GetAllCustomerServicesValidation().subscribe(result => {
       this.header=this.customerService.headers;
       this.rowData = result;
+      this.listLenght=this.rowData.length;
     }, error => {
       console.log(error);
     });

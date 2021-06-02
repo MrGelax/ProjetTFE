@@ -8,8 +8,8 @@ export class CustomerService {
     rootURL = "https://localhost:5001/api";
     constructor(private http: HttpClient) { }
 
+    list:Observable<Customer[]>;
     headers=["ID","Name","Rôle","Email"];
-
     GetAllCustomers(): Observable<Customer>{
         return this.http.get<Customer>(this.rootURL+'/Customers');
     }

@@ -18,6 +18,7 @@ export class PortfoliosTabComponent implements OnInit {
   actionList:any[];
   portfolios:Portfolios=new Portfolios();
   rejectForm:FormGroup;
+  listlenght:number=0;
 
   constructor(private portfoliosService:PortfoliosService,private confirmationService:ConfirmationService
       ,private formBuilder:FormBuilder) { }
@@ -31,7 +32,7 @@ export class PortfoliosTabComponent implements OnInit {
     this.portfoliosService.GetAllPortfoliosValidation().subscribe(result => {
       this.header=this.portfoliosService.headers;
       this.rowData = result;
-      console.log(this.rowData);
+      this.listlenght=this.rowData.length;
     }, error => {
       console.log(error);
     });

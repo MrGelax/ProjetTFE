@@ -212,6 +212,7 @@
       <li>
           <a class="nav-link" [routerLink]="['/validation']" fragment="customerPending" routerLinkActive="router-link-active" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fas fa-user-check fa-2x"></i>
+              <span *ngIf="customernotif>=1" class="badge bg-danger ms-2" >{{customernotif}}</span>
               <!-- Counter - Alerts -->
               <span class="badge badge-danger badge-counter"></span>
           </a>
@@ -219,22 +220,24 @@
       <li>
           <a class="nav-link" [routerLink]="['/validation']" fragment="castingPending" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fas fa-briefcase fa-2x"></i>
+              <span *ngIf="castnotif>=1" class="badge bg-danger ms-2" >{{castnotif}}</span>
               <!-- Counter - Alerts -->
               <span class="badge badge-danger badge-counter"></span>
           </a>
       </li>
-      <li>
-          <a class="nav-link" [routerLink]="['/validation']" fragment="ordersPending" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="far fa-id-card fa-2x"></i>
-              <span class="badge bg-danger ms-2">9</span>
+<!--      <li>-->
+<!--          <a class="nav-link" [routerLink]="['/validation']" fragment="ordersPending" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--              <i class="far fa-id-card fa-2x"></i>-->
+<!--              <span class="badge bg-danger ms-2" >{{customernotif}}</span>-->
 
-              <!-- Counter - Alerts -->
-              <span class="badge badge-danger badge-counter"></span>
-          </a>
-      </li>
+<!--              &lt;!&ndash; Counter - Alerts &ndash;&gt;-->
+<!--              <span class="badge badge-danger badge-counter"></span>-->
+<!--          </a>-->
+<!--      </li>-->
       <li>
           <a class="nav-link" [routerLink]="['/validation']" fragment="reviewPending" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fas fa-concierge-bell fa-2x"></i>
+              <span *ngIf="reviewnotif>=1" class="badge bg-danger ms-2" >{{reviewnotif}}</span>
               <!-- Counter - Alerts -->
               <span class="badge badge-danger badge-counter"></span>
           </a>
@@ -242,6 +245,23 @@
       <li>
           <a class="nav-link" [routerLink]="['/validation']" fragment="portfoliosPending" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fas fa-shopping-basket fa-2x"></i>
+              <span *ngIf="portfonotif>=1" class="badge bg-danger ms-2" >{{portfonotif}}</span>
+              <!-- Counter - Alerts -->
+              <span class="badge badge-danger badge-counter"></span>
+          </a>
+      </li>
+      <li>
+          <a class="nav-link" [routerLink]="['/validation']" fragment="publicationsPending" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-shopping-basket fa-2x"></i>
+              <span *ngIf="publinotif>=1" class="badge bg-danger ms-2" >{{publinotif}}</span>
+              <!-- Counter - Alerts -->
+              <span class="badge badge-danger badge-counter"></span>
+          </a>
+      </li>
+      <li>
+          <a class="nav-link" [routerLink]="['/validation']" fragment="customerServsPending" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-shopping-basket fa-2x"></i>
+              <span *ngIf="customerServNotif>=1" class="badge bg-danger ms-2" >{{customerServNotif}}</span>
               <!-- Counter - Alerts -->
               <span class="badge badge-danger badge-counter"></span>
           </a>

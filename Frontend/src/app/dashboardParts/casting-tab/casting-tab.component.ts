@@ -15,6 +15,7 @@ export class CastingTabComponent implements OnInit {
   actionList:any[];
   casting:Event=new Event();
   rejectForm:FormGroup;
+  listLenght:number=0;
   constructor(private eventService:EventService,private confirmationService:ConfirmationService
   ,private formBuilder:FormBuilder) { }
 
@@ -27,6 +28,7 @@ export class CastingTabComponent implements OnInit {
     this.eventService.GetAllCastingsValidation().subscribe(result => {
       this.header=this.eventService.headers;
       this.rowData = result;
+      this.listLenght=this.rowData.length;
     }, error => {
       console.log(error);
     });

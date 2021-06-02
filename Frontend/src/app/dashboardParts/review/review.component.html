@@ -11,8 +11,8 @@
         </div>
     </div>
     <div class="card-body">
-        <p *ngIf="rowData===undefined">Aucune review en attente de validation</p>
-        <p-table [columns]="header" [value]="rowData" *ngIf="rowData!==undefined">
+        <p *ngIf="listLenght===0">Aucune review en attente de validation</p>
+        <p-table [columns]="header" [value]="rowData" *ngIf="listLenght!=0">
             <ng-template pTemplate="header" let-columns>
                 <tr>
                     <th *ngFor="let col of columns" [pSortableColumn]="col">

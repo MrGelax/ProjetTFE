@@ -19,7 +19,7 @@ export class ReviewComponent implements OnInit {
   actionList:any[];
   review:Review=new Review();
   rejectForm:FormGroup;
-
+  listLenght:number=0;
   constructor(private reviewService:ReviewService,private confirmationService:ConfirmationService
       ,private formBuilder:FormBuilder) { }
 
@@ -32,6 +32,7 @@ export class ReviewComponent implements OnInit {
     this.reviewService.GetAllReviewsValidation().subscribe(result => {
       this.header=this.reviewService.headers;
       this.rowData = result;
+      this.listLenght=this.rowData.length;
     }, error => {
       console.log(error);
     });

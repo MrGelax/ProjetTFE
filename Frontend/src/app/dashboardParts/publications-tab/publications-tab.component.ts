@@ -18,7 +18,7 @@ export class PublicationsTabComponent implements OnInit {
   actionList:any[];
   publication:Publication=new Publication();
   rejectForm:FormGroup;
-
+  listLenght:number=0;
   constructor(private publicationService:PublicationService,private confirmationService:ConfirmationService
       ,private formBuilder:FormBuilder) { }
 
@@ -31,6 +31,7 @@ export class PublicationsTabComponent implements OnInit {
     this.publicationService.GetAllPublicationsValidation().subscribe(result => {
       this.header=this.publicationService.headers;
       this.rowData = result;
+      this.listLenght=this.rowData.length;
     }, error => {
       console.log(error);
     });
