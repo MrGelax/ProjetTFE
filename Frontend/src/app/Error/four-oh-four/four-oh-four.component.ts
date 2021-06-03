@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-four-oh-four',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FourOhFourComponent implements OnInit {
 
-  constructor() { }
+  message:string;
+
+  constructor(private route:ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.message=this.route.snapshot.params['message'];
   }
 
 }

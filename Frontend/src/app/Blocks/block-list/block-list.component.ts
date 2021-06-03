@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfirmationService } from 'primeng/api';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {BlockService} from "../../services/Blocks/block.service";
 import {Block} from "../block.model";
+import {KeycloakSecurityService} from "../../services/Keycloak/keycloak-security.service";
 
 @Component({
   selector: 'app-block-list',
@@ -16,10 +17,12 @@ export class BlockListComponent implements OnInit {
   block:Block=new Block();
 
   constructor(private confirmationService:ConfirmationService,
-              private route:ActivatedRoute,
-              public blockService:BlockService){ }
+              private route:ActivatedRoute,private router:Router,
+              public blockService:BlockService,public securityService:KeycloakSecurityService){ }
 
   ngOnInit(): void {
+    if (!this.securityService.kc.hasRealmRole('CMSManager'))
+      this.router.navigate(['/not-found/'+'Access dinied']);
     this.blockService.GetAllBlocks().subscribe(result => {
       this.header=this.blockService.headers;
       this.rowData = result.blocks;

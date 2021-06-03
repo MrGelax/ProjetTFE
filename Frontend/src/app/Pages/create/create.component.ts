@@ -8,6 +8,7 @@ import {Router} from "@angular/router";
 import {PagesService} from "../../services/Pages/pages.service";
 import {PageLocal} from "../pageLocal.model";
 import {Page} from "../page.model";
+import {KeycloakSecurityService} from "../../services/Keycloak/keycloak-security.service";
   
 
 @Component({
@@ -27,9 +28,12 @@ export class CreateComponent implements OnInit {
   pl:PageLocal=new PageLocal();
   submited=false;
   constructor(private route:Router,private createService:CreateService,
-              private formBuilder:FormBuilder,public pageService:PagesService) { }
+              private formBuilder:FormBuilder,public pageService:PagesService,
+              public securityService:KeycloakSecurityService) { }
 
   ngOnInit(): void {
+    if (!this.securityService.kc.hasRealmRole('CMSManager'))
+      this.route.navigate(['/not-found/'+'Access dinied']);
     this.languages=this.createService.languages;
     this.user=this.createService.Users[0];
     this.curentLang=this.user.Culture;

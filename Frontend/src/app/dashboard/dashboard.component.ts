@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {KeycloakSecurityService} from "../services/Keycloak/keycloak-security.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-dashboard',
@@ -15,10 +17,11 @@ export class DashboardComponent implements OnInit {
   // CastingList:any[];
   // ServicesList:any[];
   // Headers:any[];
-  constructor() { }
+  constructor(protected securityService:KeycloakSecurityService,protected route:Router) { }
 
   ngOnInit(): void {
-    
+    if (!this.securityService.kc.hasRealmRole('CMSManager'))
+      this.route.navigate(['/not-found/'+'Access dinied']);
   }
 
 }

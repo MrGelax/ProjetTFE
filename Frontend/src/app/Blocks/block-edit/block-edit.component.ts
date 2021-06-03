@@ -5,6 +5,7 @@ import {BlockLocal} from "../blockLocal.modal";
 import {ActivatedRoute, Router} from "@angular/router";
 import {CreateService} from "../../services/Pages/create.service";
 import {BlockService} from "../../services/Blocks/block.service";
+import {KeycloakSecurityService} from "../../services/Keycloak/keycloak-security.service";
 
 @Component({
   selector: 'app-block-edit',
@@ -24,37 +25,40 @@ export class BlockEditComponent implements OnInit {
   submited=false;
   constructor(private router:Router,private route:ActivatedRoute,
               private createService:CreateService,private formBuilder:FormBuilder,
-              public blockService:BlockService) { }
+              public blockService:BlockService,protected securityService:KeycloakSecurityService) { }
 
   ngOnInit(): void {
-    this.languages=this.createService.languages;
-    this.user=this.createService.Users[0];
-    this.curentLang=this.user.Culture;
-    this.FR=this.initialiserFormulaire(this.FR,this.blcFR);
-    this.EN=this.initialiserFormulaire(this.EN,this.blcEn);
+      if (!this.securityService.kc.hasRealmRole('CMSManager'))
+          this.router.navigate(['/not-found/'+'Access dinied']);
+      if(this.blockService.GetById(this.route.snapshot.params['id'])===undefined)
+          this.router.navigate(['/not-found/'+'Page not found']);
+      this.languages=this.createService.languages;
+      this.user=this.createService.Users[0];
+      this.curentLang=this.user.Culture;
+      this.FR=this.initialiserFormulaire(this.FR,this.blcFR);
+      this.EN=this.initialiserFormulaire(this.EN,this.blcEn);
 
-    this.blockService.GetById(this.route.snapshot.params['id']).subscribe(result=>{
-      this.initialiserBlock(result);
-      this.blockService.GetByBlockId(this.route.snapshot.params['id']).subscribe(result => {
-          this.blcFR=this.initialiserBlockLocal(result[1],this.blcFR);
-          this.blcEn=this.initialiserBlockLocal(result[0],this.blcEn);
-          this.FR.setValue({
-              systemName:this.block.systemName,
-              label:this.block.label,
-              contentMain:this.blcFR.body
+      this.blockService.GetById(this.route.snapshot.params['id']).subscribe(result=>{
+          this.initialiserBlock(result);
+          this.blockService.GetByBlockId(this.route.snapshot.params['id']).subscribe(result => {
+              this.blcFR=this.initialiserBlockLocal(result[1],this.blcFR);
+              this.blcEn=this.initialiserBlockLocal(result[0],this.blcEn);
+              this.FR.setValue({
+                  systemName:this.block.systemName,
+                  label:this.block.label,
+                  contentMain:this.blcFR.body
+              });
+              this.EN.setValue({
+                  systemName:this.block.systemName,
+                  label:this.block.label,
+                  contentMain:this.blcEn.body
+              });
+              },error => {
+                    console.log(error);
           });
-          this.EN.setValue({
-              systemName:this.block.systemName,
-              label:this.block.label,
-              contentMain:this.blcEn.body
-          });
-      }, error => {
-        console.log(error);
+          },error => {
+                console.log(error);
       });
-    }, error => {
-      console.log(error);
-    });
-
   }
   initialiserBlock(result:Block){
     this.block.id=result.id;
@@ -85,28 +89,25 @@ export class BlockEditComponent implements OnInit {
   }
 
   currentLang(lang:string){
-    this.curentLang=lang;
+      this.curentLang=lang;
   }
   duplicatoTo(lang:any){
-    if(lang==="EN"&&this.curentLang==="FR"){
+    if(lang==="EN"&&this.curentLang==="FR")
       this.EN=this.FR;
-    }
-    if(lang==="FR"&&this.curentLang==="EN"){
+    if(lang==="FR"&&this.curentLang==="EN")
       this.FR=this.EN;
-    }
     this.curentLang=lang;
   }
-    get fr() { return this.FR.controls; }
-    get en() { return this.EN.controls; }
+  get fr() { return this.FR.controls; }
+  get en() { return this.EN.controls; }
   onSubmit(){
-    this.submited=true;
-    if(this.FR.invalid && this.EN.invalid){
-        return;
-    }
-    this.block.systemName=this.FR.value.systemName;
-    this.block.label=this.FR.value.label;
-    this.block.body=this.FR.value.contentMain;
-    this.blockService.UpdateBlock(this.block,this.block.id).subscribe(result=>{
+      this.submited=true;
+      if(this.FR.invalid && this.EN.invalid)
+          return;
+      this.block.systemName=this.FR.value.systemName;
+      this.block.label=this.FR.value.label;
+      this.block.body=this.FR.value.contentMain;
+      this.blockService.UpdateBlock(this.block,this.block.id).subscribe(result=>{
           this.block=result;
           this.blcFR.body=this.FR.value.contentMain;
           this.blockService.UpdateBlockLocal(this.blcFR,this.blcFR.id).subscribe(resFR=>{

@@ -8,6 +8,7 @@ import {BlockService} from "../../services/Blocks/block.service";
 import {Page} from "../page.model";
 import {PageLocal} from "../pageLocal.model";
 import {PagesService} from "../../services/Pages/pages.service";
+import {KeycloakSecurityService} from "../../services/Keycloak/keycloak-security.service";
 
 @Component({
   selector: 'app-edit',
@@ -27,9 +28,13 @@ export class EditComponent implements OnInit {
   submited=false;
   constructor(private router:Router,private route:ActivatedRoute,
               private createService:CreateService,private formBuilder:FormBuilder,
-              public pageService:PagesService) { }
+              public pageService:PagesService,public securityService:KeycloakSecurityService) { }
 
   ngOnInit(): void {
+    if (!this.securityService.kc.hasRealmRole('CMSManager'))
+      this.router.navigate(['/not-found/'+'Access dinied']);
+    if(this.pageService.GetById(this.route.snapshot.params['id'])===undefined)
+      this.router.navigate(['/not-found/'+'Page not found']);
     this.languages=this.createService.languages;
     this.user=this.createService.Users[0];
     this.curentLang=this.user.Culture;

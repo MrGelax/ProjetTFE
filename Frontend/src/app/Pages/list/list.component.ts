@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfirmationService } from 'primeng/api';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Page} from "../page.model";
 import {PagesService} from "../../services/Pages/pages.service";
+import {KeycloakSecurityService} from "../../services/Keycloak/keycloak-security.service";
 
 @Component({
   selector: 'app-list',
@@ -15,10 +16,13 @@ export class ListComponent implements OnInit {
   listToDelete:number[];
   page:Page=new Page();
 
-  constructor(private confirmationService:ConfirmationService,private route:ActivatedRoute,
-              public pageService:PagesService) { }
+  constructor(private router:Router,private confirmationService:ConfirmationService,private route:ActivatedRoute,
+              public pageService:PagesService,public securityService:KeycloakSecurityService) { }
 
   ngOnInit(): void {
+    if (!this.securityService.kc.hasRealmRole('CMSManager'))
+      this.router.navigate(['/not-found/'+'Access dinied']);
+
     this.pageService.GetAllPages().subscribe(result => {
       this.header=this.pageService.headers;
       console.log("Bonjour");

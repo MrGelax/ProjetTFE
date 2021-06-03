@@ -4,6 +4,7 @@ import { ListService } from '../../services/list.service';
 import { ViewService } from '../../services/view.service';
 import {PagesService} from "../../services/Pages/pages.service";
 import {Page} from "../page.model";
+import {KeycloakSecurityService} from "../../services/Keycloak/keycloak-security.service";
 
 @Component({
   selector: 'app-view',
@@ -14,12 +15,15 @@ export class ViewComponent implements OnInit {
 
   obj:Page;
   constructor(private viewtService:ViewService,
-    private route:ActivatedRoute,private router:Router,public pagesService:PagesService) { }
+    private route:ActivatedRoute,private router:Router,public pagesService:PagesService,
+              public securityService:KeycloakSecurityService) { }
 
   ngOnInit(): void {
+    if (!this.securityService.kc.hasRealmRole('CMSManager'))
+      this.router.navigate(['/not-found/'+'Access dinied']);
     const id=this.route.snapshot.params['id'];
     if(this.viewtService.getPageByID(+id)===undefined) {
-      this.router.navigate(['/not-found']);  
+      this.router.navigate(['/not-found/'+'Page not found']);
     }else{
       this.pagesService.GetById(id).subscribe(result=>{
         this.obj=result;

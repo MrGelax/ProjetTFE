@@ -158,7 +158,7 @@ const appRoutes:Routes=[
   {path:'ProfileItems', component:ProfileItemsComponent},
 
   
-  {path:'not-found',component:FourOhFourComponent},
+  {path:'not-found/:message',component:FourOhFourComponent},
   {path:'',component:DashboardComponent}
 ];
 

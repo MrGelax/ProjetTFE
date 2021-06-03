@@ -3,6 +3,7 @@ import { ViewService } from 'src/app/services/view.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import {BlockService} from "../../services/Blocks/block.service";
 import {Block} from "../block.model";
+import {KeycloakSecurityService} from "../../services/Keycloak/keycloak-security.service";
 
 @Component({
   selector: 'app-block-view',
@@ -11,13 +12,16 @@ import {Block} from "../block.model";
 })
 export class BlockViewComponent implements OnInit {
   obj:Block;
-  constructor(private viewtService:ViewService,
+  constructor(private viewtService:ViewService,public securityService:KeycloakSecurityService,
     private route:ActivatedRoute,private router:Router,public blockService:BlockService) { }
 
   ngOnInit(): void {
+    if (!this.securityService.kc.hasRealmRole('CMSManager'))
+      this.router.navigate(['/not-found/'+'Access dinied']);
+
     const id=this.route.snapshot.params['id'];
     if(this.blockService.GetById(id)===undefined) {
-      this.router.navigate(['/not-found']);  
+      this.router.navigate(['/not-found/'+'Page not found']);
     }else{
       this.blockService.GetById(id).subscribe(result=>{
         this.obj=result;

@@ -70,4 +70,7 @@ export class TopBarComponent implements OnInit {
   onMyAccount() {
     this.securityService.kc.accountManagement()
   }
+  isCMSManager():boolean{
+    return this.securityService.kc.hasRealmRole("CMSManager");
+  }
 }

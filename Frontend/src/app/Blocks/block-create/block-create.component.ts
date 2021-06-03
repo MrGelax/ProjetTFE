@@ -5,6 +5,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {BlockService} from "../../services/Blocks/block.service";
 import {Block} from "../block.model";
 import {BlockLocal} from "../blockLocal.modal";
+import {ViewService} from "../../services/view.service";
+import {KeycloakSecurityService} from "../../services/Keycloak/keycloak-security.service";
 
 @Component({
   selector: 'app-block-create',
@@ -21,39 +23,41 @@ export class BlockCreateComponent implements OnInit {
   block:Block=new  Block();
   blcLocal:BlockLocal=new BlockLocal();
   submited=false;
-  constructor(private route:Router,private createService:CreateService,private formBuilder:FormBuilder,public blockService:BlockService) { }
+  constructor(private route:Router,private createService:CreateService,
+              private formBuilder:FormBuilder,public blockService:BlockService,
+              public securityService:KeycloakSecurityService) { }
 
   ngOnInit(): void {
-    this.languages=this.createService.languages;
-    this.user=this.createService.Users[0];
-    this.curentLang=this.user.Culture;
-    this.FR=this.formBuilder.group({
-      systemName:['',Validators.required],
-      label:['',Validators.required],
-      contentMain:['',Validators.required]
-    });
-    this.EN=this.formBuilder.group({
-      systemName:['',Validators.required],
-      label:['',Validators.required],
-      contentMain:['',Validators.required]
-    });
+      if (!this.securityService.kc.hasRealmRole('CMSManager'))
+          this.route.navigate(['/not-found/'+'Access dinied']);
+      this.languages=this.createService.languages;
+      this.user=this.createService.Users[0];
+      this.curentLang=this.user.Culture;
+      this.FR=this.formBuilder.group({
+          systemName:['',Validators.required],
+          label:['',Validators.required],
+          contentMain:['',Validators.required]
+      });
+      this.EN=this.formBuilder.group({
+          systemName:['',Validators.required],
+          label:['',Validators.required],
+          contentMain:['',Validators.required]
+      });
   }
   currentLang(lang:string){
-    this.curentLang=lang;
-    console.log("Langue : "+this.curentLang);
+      this.curentLang=lang;
+      console.log("Langue : "+this.curentLang);
   }
   duplicatoTo(lang:any){
-    if(lang==="EN"&&this.curentLang==="FR"){
-      this.EN=this.FR;
-    }
-    if(lang==="FR"&&this.curentLang==="EN"){
-      this.FR=this.EN;
-    }
-    this.curentLang=lang;
-    console.log(this.curentLang)
+      if(lang==="EN"&&this.curentLang==="FR")
+          this.EN=this.FR;
+      if(lang==="FR"&&this.curentLang==="EN")
+          this.FR=this.EN;
+      this.curentLang=lang;
+      console.log(this.curentLang)
   }
-    get fr() { return this.FR.controls; }
-    get en() { return this.EN.controls; }
+  get fr() { return this.FR.controls; }
+  get en() { return this.EN.controls; }
   onSubmit(){
       this.submited=true;
       if(this.FR.invalid && this.EN.invalid){
