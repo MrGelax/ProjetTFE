@@ -20,7 +20,8 @@ export class DashboardComponent implements OnInit {
   constructor(protected securityService:KeycloakSecurityService,protected route:Router) { }
 
   ngOnInit(): void {
-    if (!this.securityService.kc.hasRealmRole('CMSManager'))
+    if (!(this.securityService.kc.hasRealmRole('CMSManager')||this.securityService.kc.hasRealmRole('ADMIN')
+        ||this.securityService.kc.hasRealmRole('e-shopManager')))
       this.route.navigate(['/not-found/'+'Access dinied']);
   }
 

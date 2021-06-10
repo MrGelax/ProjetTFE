@@ -63,6 +63,7 @@ export class TopBarComponent implements OnInit {
   }
   onLogout(){
     this.securityService.kc.logout();
+    console.log("LogOut");
   }
   onLogin(){
     this.securityService.kc.login();
@@ -70,7 +71,7 @@ export class TopBarComponent implements OnInit {
   onMyAccount() {
     this.securityService.kc.accountManagement()
   }
-  isCMSManager():boolean{
-    return this.securityService.kc.hasRealmRole("CMSManager");
+  isAllowed(role:string):boolean{
+    return this.securityService.kc.hasRealmRole(role);
   }
 }

@@ -24,7 +24,7 @@
                   <br>
 
                   <!-- Nav Item - Pages Collapse Menu -->
-                  <li class="nav-item" *ngIf="isCMSManager()">
+                  <li class="nav-item" *ngIf="isAllowed('CMSManager')||isAllowed('ADMIN')">
                       <a class="sbLinks collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
 
 
@@ -57,7 +57,7 @@
                   <br>
 
                   <!-- Nav Item - Utilities Collapse Menu -->
-                  <li class="nav-item">
+                  <li class="nav-item" *ngIf="isAllowed('e-shopManager')||isAllowed('ADMIN')">
                       <a class="sbLinks collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
                           <div class="icons">
                               <i class="fas fa-shopping-basket" style="color: white; margin-top: 25%; "></i>
@@ -91,7 +91,7 @@
                   <br>
 
                   <!-- Nav Item - Pages Collapse Menu -->
-                  <li class="nav-item">
+                  <li class="nav-item" *ngIf="isAllowed('ADMIN')">
                       <a class="sbLinks collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
                           <div class="icons">
                               <i class="fas fa-users" style="color: white; margin-top: 25%; "></i>
@@ -126,7 +126,7 @@
                   <br>
 
                   <!-- Nav Item - Pages Collapse Menu -->
-                  <li class="nav-item">
+                  <li class="nav-item" *ngIf="isAllowed('ADMIN')">
                       <a class="sbLinks collapsed" href="#" data-toggle="collapse" data-target="#collapsePage" aria-expanded="true" aria-controls="collapsePage">
                           <div class="icons">
                               <i class="fas fa-envelope-open-text" style="color: white; margin-top: 25%; "></i>
@@ -161,7 +161,7 @@
                   <br>
 
                   <!-- Nav Item - Pages Collapse Menu -->
-                  <li class="nav-item">
+                  <li class="nav-item" *ngIf="isAllowed('ADMIN')">
                       <a class="sbLinks collapsed" href="#" data-toggle="collapse" data-target="#collapseP" aria-expanded="true" aria-controls="collapseP">
 
                           <div class="icons">
@@ -183,7 +183,7 @@
                   <br>
 
                   <!-- Nav Item - Pages Collapse Menu -->
-                  <li class="nav-item">
+                  <li class="nav-item" *ngIf="isAllowed('ADMIN')">
                       <a class="sbLinks collapsed" href="#" data-toggle="collapse" data-target="#collapsePag" aria-expanded="true" aria-controls="collapsePag">
 
                           <div class="icons">
